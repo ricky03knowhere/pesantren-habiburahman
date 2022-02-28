@@ -1,0 +1,76 @@
+@use '../variables' as var
+
+// CAROUSEL
+#carousel.carousel
+  .carousel-item
+    height: 110vh
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+    &::before
+      content: ''
+      display: block
+      position: absolute
+      height: 70%
+      width: 100%
+      bottom: 0
+      background-image: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))  
+
+    .carousel-caption
+      display: grid !important
+      height: 100%
+      width: 70%
+      margin: auto
+      justify-content: center
+      align-content: center
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7)
+      h5
+        color: var.$primary-color
+        font-size: 2.6rem
+      p
+        margin-top: 1em
+        color: var.$light-color
+        text-align: justify
+    
+
+  .btn-explore
+    position: absolute
+    color: var.$text-color
+    display: grid 
+    margin-top: -20%
+    justify-self: center
+    width: 10%
+    left: 50%
+    transform: translateX(-50%)
+    padding: 1.5em 2em
+    background: var.$ternary-color
+    &::before
+      background: darken(var.$ternary-color, 25)
+
+  .carousel-indicators
+    margin-bottom: 4em
+    border-radius: 2em !important
+    li.active
+      background: var.$indigo-color
+
+  // Mobile version
+  @media (max-width: 720px)
+    .carousel-item
+      height: 90vh
+      .carousel-caption
+        top: -4em
+        width: 80%
+        left: 2em
+        h5
+          text-align: left
+        p
+          font-size: .9rem
+
+    .btn-explore
+      margin-top: -50%
+      width: 50%
+    .carousel-indicators
+      display: none
+    .ctrl
+      display: none

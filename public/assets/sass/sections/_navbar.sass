@@ -1,0 +1,15 @@
+@use '../variables' as var
+
+// NAVBAR
+#navbar
+  z-index: 999
+  .slicknav_icon-bar
+    background: var.$indigo-color !important
+    border-radius: 1em
+  .main-menu
+    a
+      color: #4b9968
+      &::before
+        background: var.$indigo-color
+    #navigation .submenu
+      border-radius: .6em

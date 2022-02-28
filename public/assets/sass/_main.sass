@@ -1,0 +1,37 @@
+@use './variables' as var
+
+// SCROOLL-UP BUTTON
+#scrollUp
+  background: var.$primary-color
+  color: darken(var.$secondary-text-color, 15)
+  &:hover
+    color: var.$text-color
+
+// WAVE-1
+#wave-1
+  margin-top: -12em
+  position: absolute
+  // Mobile version
+  @media (max-width: 720px)
+    margin-top: -4.9em
+
+// WAVE-2
+#wave-2
+  margin-top: 6em
+
+
+//TOOLTIP 
+.tooltip
+  margin: 1.5em 0 -0.5em
+  margin-left: 12em
+  position: absolute
+  .arrow::before
+    margin-left: 1em
+    border-top-color: var.$secondary-text-color
+    border-bottom-color: var.$secondary-text-color
+  .tooltip-inner
+    box-shadow: 0 0 10px 2px rgba(108, 88, 219, 0.2) 
+    border-radius: 1em
+    font-size: .7rem
+    background: var.$secondary-text-color
+
