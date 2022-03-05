@@ -1,0 +1,71 @@
+@use '../variables' as var
+
+// WAVE-2
+#wave-2
+  margin-top: 6em
+// FOOTER
+#footer
+  background: var.$secondary-color
+  padding: 1em
+  color: var.$icon-color
+  .col-md-3
+    display:  grid
+    justify-content: center
+  .brand-wrapper
+    padding: .5em 1em
+    text-align: center
+    background: white
+    border-radius: .5em
+
+  .sosmed
+    margin-top: 1em
+    text-align: center
+    .sosmed-wrapper
+      line-height: 2.5em
+      text-decoration: none
+      display: inline-block
+      text-align: center
+      align-content: center
+      height: 2.5em
+      width: 2.5em
+      margin-left: 1em
+      background: white
+      border-radius: 2em
+
+      &:hover i::before
+        background-position: 0% 0%
+        
+      .fab, .far
+        font-size: 1.6rem
+        color: var.$secondary-color
+
+      i::before
+        display: ""
+        top: 5.3px
+        position: relative
+        text-align: center
+        background-size: 250% 250%
+        background-position: 75% 75%
+        transition: background .24s linear
+        background-clip: text
+        -webkit-background-clip: text
+        -webkit-text-fill-color: transparent
+
+      @each $sosmed, $color in var.$sosmeds
+        .fa-#{$sosmed}::before
+          background-image: linear-gradient(135deg, $color 30%, var.$secondary-color 50%)
+  p, span
+    font-size: .8rem
+  p
+    color: var.$icon-color
+    margin-top: 3em
+    text-align: center
+    line-height: 2em
+    a
+      font-size: .9rem
+      text-decoration: none
+      font-family: var.$primary-font, sans-serif
+  
+  // Mobile version
+  @media (max-width: 720px)
+    padding-top: 3em

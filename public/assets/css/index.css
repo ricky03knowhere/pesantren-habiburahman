@@ -291,7 +291,7 @@
   filter: brightness(0.75);
   width: 100%;
   height: 100%;
-  background-image: url(../img/team/unnamed.png);
+  background-image: url(../img/unnamed.jpg);
   background-position: center;
   background-size: cover;
   transition: all 0.4s;
@@ -399,6 +399,92 @@
   #profile .modal .modal-body .col-md-4 {
     height: 18em;
     margin-bottom: 2em;
+  }
+}
+
+#wave-2 {
+  margin-top: 6em;
+}
+
+#footer {
+  background: #A56DF2;
+  padding: 1em;
+  color: #2b044d;
+}
+#footer .col-md-3 {
+  display: grid;
+  justify-content: center;
+}
+#footer .brand-wrapper {
+  padding: 0.5em 1em;
+  text-align: center;
+  background: white;
+  border-radius: 0.5em;
+}
+#footer .sosmed {
+  margin-top: 1em;
+  text-align: center;
+}
+#footer .sosmed .sosmed-wrapper {
+  line-height: 2.5em;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  align-content: center;
+  height: 2.5em;
+  width: 2.5em;
+  margin-left: 1em;
+  background: white;
+  border-radius: 2em;
+}
+#footer .sosmed .sosmed-wrapper:hover i::before {
+  background-position: 0% 0%;
+}
+#footer .sosmed .sosmed-wrapper .fab, #footer .sosmed .sosmed-wrapper .far {
+  font-size: 1.6rem;
+  color: #A56DF2;
+}
+#footer .sosmed .sosmed-wrapper i::before {
+  display: "";
+  top: 5.3px;
+  position: relative;
+  text-align: center;
+  background-size: 250% 250%;
+  background-position: 75% 75%;
+  transition: background 0.24s linear;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#footer .sosmed .sosmed-wrapper .fa-facebook-square::before {
+  background-image: linear-gradient(135deg, #0480fe 30%, #A56DF2 50%);
+}
+#footer .sosmed .sosmed-wrapper .fa-instagram::before {
+  background-image: linear-gradient(135deg, #ee258e 30%, #A56DF2 50%);
+}
+#footer .sosmed .sosmed-wrapper .fa-whatsapp::before {
+  background-image: linear-gradient(135deg, #11d458 30%, #A56DF2 50%);
+}
+#footer .sosmed .sosmed-wrapper .fa-envelope::before {
+  background-image: linear-gradient(135deg, #febd39 30%, #A56DF2 50%);
+}
+#footer p, #footer span {
+  font-size: 0.8rem;
+}
+#footer p {
+  color: #2b044d;
+  margin-top: 3em;
+  text-align: center;
+  line-height: 2em;
+}
+#footer p a {
+  font-size: 0.9rem;
+  text-decoration: none;
+  font-family: "Nunito", sans-serif;
+}
+@media (max-width: 720px) {
+  #footer {
+    padding-top: 3em;
   }
 }
 

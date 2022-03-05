@@ -34,7 +34,7 @@ function Navbar() {
                           url === "" || url === "#carousel" ? "active" : ""
                         }
                       >
-                        <Link to="/#carousel">Home</Link>
+                        <a href="/#carousel">Home</a>
                       </li>
                       <li
                         className={
