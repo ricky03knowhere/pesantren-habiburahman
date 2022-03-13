@@ -1,10 +1,8 @@
 import React from "react";
 
-function Modal(props) {
+function ProfileModal(props) {
   const data = props.data[0];
-  // console.log(data[8]);
-  // console.log(data);
-  // console.log(data[7]);
+
   return (
     <div
       class="modal fade"
@@ -31,7 +29,7 @@ function Modal(props) {
           <div class="modal-body">
             <div class="row">
               <div class="col-md-4 justify-items-center">
-                <img src={"/assets/img/" + data[1]} alt="profile-img" />
+                <img src={"/assets/img/" + data[1]} alt={data[2]} />
               </div>
               <div class="col-md-8">
                 <div class="table-responsive">
@@ -133,4 +131,4 @@ function Modal(props) {
   );
 }
 
-export default Modal;
+export default ProfileModal;

@@ -1,21 +1,21 @@
 import React, { useState } from "react";
+import { Element } from "react-scroll";
 import { about, profiles } from "../database/profile";
-import Modal from "./Modal";
+import ProfileModal from "./ProfileModal";
 
 function Profile() {
   const [modal, setModal] = useState("");
 
-  const loadModal = (e) => {
+  function loadModal(e) {
     const id = e.target.dataset.id;
     let pengajar = profiles.filter((prof) => prof[0] == id);
 
-    // modal = ""
     setModal((modal) => {
-      modal = <Modal data={pengajar} />;
+      modal = <ProfileModal data={pengajar} />;
       console.log("ok");
       return modal;
     });
-  };
+  }
 
   let details = about[1].map((detail) => (
     <tr>
@@ -90,11 +90,11 @@ function Profile() {
         </div>
 
         {/* <!--PENGAJAR START--> */}
-        <div className="row pengajar-wrapper" id="pengajar">
+        <Element className="row pengajar-wrapper element" id="pengajar" name="pengajar">
           <h3 className="sub-title">Daftar Pengajar</h3>
 
           <div className="owl-carousel owl-theme">{pengajar}</div>
-        </div>
+        </Element>
         {/* <!--PENGAJAR END--> */}
       </div>
 

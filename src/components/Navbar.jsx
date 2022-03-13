@@ -1,14 +1,12 @@
-import React from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+// import { Link as Link, animateScroll as scroll } from "react-scroll";
 
 function Navbar() {
-  const location = useLocation();
-  const { pathname } = location;
-  const { hash } = location;
+  const { pathname, hash } = useLocation();
   const splitLocation = pathname.split("/");
-
   const url = splitLocation[1] + hash;
-  
+
   return (
     <header>
       {/* Header Start */}
@@ -31,61 +29,52 @@ function Navbar() {
                     <ul id="navigation">
                       <li
                         className={
-                          url === "" || url === "#carousel" ? "active" : ""
-                        }
-                      >
-                        <a href="/#carousel">Home</a>
-                      </li>
-                      <li
-                        className={
-                          url === "#profile" || url === "#pengajar"
+                          url === "" ||
+                          url === "home" ||
+                          url === "home/carousel"
                             ? "active"
                             : ""
                         }
                       >
-                        <Link to="/#profile">Profil</Link>
+                        <Link to="home/carousel">Home</Link>
+                      </li>
+                      <li
+                        className={
+                          url === "home/profile" || url === "home/pengajar"
+                            ? "active"
+                            : ""
+                        }
+                      >
+                        <Link to="home/profile">Profil</Link>
                         <ul className="submenu">
                           <li>
-                            <Link to="/#profile">Profil Pesantren</Link>
+                            <Link to="home/profile">Profil Pesantren</Link>
                           </li>
                           <li>
-                            <Link to="/#pengajar">Profil Pengajar</Link>
+                            <Link to="home/pengajar">Profil Pengajar</Link>
                           </li>
                         </ul>
                       </li>
                       <li
                         className={
                           url === "kurikulum" ||
-                          url === "kurikulum#jadwal" ||
-                          url === "kurikulum#kitab" ||
-                          url === "kurikulum#ekstrakulikuler"
+                          url === "kurikulum/jadwal" ||
+                          url === "kurikulum/kitab" ||
+                          url === "kurikulum/kulikuler"
                             ? "active"
                             : ""
                         }
                       >
-                        <Link to="/kurikulum">Kurikulum</Link>
+                        <Link to="kurikulum">Kurikulum</Link>
                         <ul className="submenu">
                           <li>
-                            <Link
-                              activeClassName="active"
-                              to="/kurikulum#jadwal"
-                            >
-                              Jadwal Kegiatan
-                            </Link>
+                            <Link to="kurikulum/jadwal">Jadwal Kegiatan</Link>
                           </li>
                           <li>
-                            <Link
-                              activeClassName="active"
-                              to="/kurikulum#kitab"
-                            >
-                              Kitab yang Dikaji
-                            </Link>
+                            <Link to="kurikulum/kitab">Kitab yang Dikaji</Link>
                           </li>
                           <li>
-                            <Link
-                              activeClassName="active"
-                              to="/kurikulum#ekstrakulikuler"
-                            >
+                            <Link to="kurikulum/kulikuler">
                               Ekstrakulikuler
                             </Link>
                           </li>
@@ -94,55 +83,44 @@ function Navbar() {
                       <li
                         className={
                           url === "info" ||
-                          url === "info#alamat" ||
-                          url === "info#kontak"
+                          url === "info/alamat" ||
+                          url === "info/kontak"
                             ? "active"
                             : ""
                         }
                       >
-                        <Link to="/info">Info</Link>
+                        <Link to="info">Info</Link>
                         <ul className="submenu">
                           <li>
-                            <Link to="/info#alamat">Alamat</Link>
+                            <Link to="info/lokasi">Alamat</Link>
                           </li>
                           <li>
-                            <Link to="/info#kontak">Kontak</Link>
+                            <Link to="info/kontak">Kontak</Link>
                           </li>
                         </ul>
                       </li>
                       <li
                         className={
                           url === "pendaftaran" ||
-                          url === "pendaftaran#syarat" ||
-                          url === "pendaftaran#tahapan" ||
-                          url === "pendaftaran#biaya"
+                          url === "pendaftaran/syarat" ||
+                          url === "pendaftaran/alur" ||
+                          url === "pendaftaran/biaya"
                             ? "active"
                             : ""
                         }
                       >
-                        <Link to="/pendaftaran">Pendaftaran</Link>
+                        <Link to="pendaftaran">Pendaftaran</Link>
                         <ul className="submenu">
                           <li>
-                            <Link
-                              activeClassName="active"
-                              to="/pendaftaran#syarat"
-                            >
+                            <Link to="pendaftaran/syarat">
                               Syarat Pendafraran
                             </Link>
                           </li>
                           <li>
-                            <Link
-                              activeClassName="active"
-                              to="/pendaftaran#tahapan"
-                            >
-                              Tahapan Pendaftaran
-                            </Link>
+                            <Link to="pendaftaran/alur">Alur Pendaftaran</Link>
                           </li>
                           <li>
-                            <Link
-                              activeClassName="active"
-                              to="/pendaftaran#biaya"
-                            >
+                            <Link to="pendaftaran/biaya">
                               Biaya Pendaftaran
                             </Link>
                           </li>

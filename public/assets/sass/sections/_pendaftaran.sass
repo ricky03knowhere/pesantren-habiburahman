@@ -1,0 +1,71 @@
+@use '../variables' as var
+
+#pendaftaran
+  margin-top: 14em
+
+  .sub-title
+    margin-bottom: 2rem
+
+  .persyaratan-wrapper, .alur-wrapper,  .biaya-wrapper
+    margin-bottom: 120px
+    .card
+      box-shadow: 0 0 10px 2px rgba(108, 88, 219, 0.2) 
+      transition: all .4s
+      padding: 1em 30px
+      background: #f9f9ff
+      border: none
+      border-radius: .6em
+      .list-group-item
+        background: #f9f9ff
+        padding-left: 46px
+
+      &:hover
+        box-shadow: 7px 7px 20px -5px rgba(108, 88, 219, 0.356) 
+      
+      // Mobile version
+      @media (max-width: 720px)
+        padding: 1em .5em
+
+  .persyaratan-wrapper
+    text-align: justify
+    .fas
+      top: 1em
+      left: 1em
+      position: absolute
+    
+  .alur-wrapper .card
+    text-align: justify
+    .list-group-item .number
+      color: var.$indigo-color
+      left: 3px
+      position: absolute
+    
+    a
+      color: var.$indigo-color
+      &:hover
+        color: var.$secondary-color
+
+  .biaya-wrapper
+    h3
+      margin-left: -2px
+    h4
+      margin-bottom: 1em
+      color: var.$indigo-color
+    .card
+      padding: 20px
+      background: #fff
+      &:first-of-type
+        margin-bottom: 60px
+        
+    .progress-table-wrap
+      overflow: auto
+      border-radius: .6em
+      .progress-table
+        min-width: 410px
+      .serial
+        width: 5em
+      .percentage
+        padding-right: 0
+        width: 16em
+      .visit
+        width: 12em

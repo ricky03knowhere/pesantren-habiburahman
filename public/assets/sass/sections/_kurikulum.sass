@@ -1,0 +1,267 @@
+@use '../variables' as var
+
+// KURIKULUM
+#kurikulum
+  margin-top: 14em
+  // color: var.$secondary-text-color
+  .sub-title
+    margin-bottom: 2rem
+    
+  // KEGIATAN
+  .kegiatan
+    margin-bottom: 120px
+    .accordion
+      box-shadow: 0 0 10px 2px rgba(108, 88, 219, 0.2) 
+      border-radius: .6em
+      transition: all .4s
+      &:hover
+        box-shadow: 7px 7px 20px -5px rgba(108, 88, 219, 0.356) 
+      
+      .card
+        border: none
+        overflow: hidden
+
+      .card:nth-child(1)
+        border-radius: .6em .6em 0 0
+      .card:nth-child(3)
+        border-radius: 0 0 .6em .6em
+
+      .card-header
+        position: relative
+        &:hover .btn
+          z-index: 0
+          color: darken(var.$secondary-text-color, 15)
+        &:hover .btn::before
+          transform: scaleX(100%)
+          z-index: -1
+        & .angle.collapsed i
+          transform: rotate(0)
+
+      .progress-table-wrap
+        overflow: auto
+        .progress-table
+          min-width: 410px
+        .serial
+          width: 5em
+        .visit
+          width: 12em
+        .percentage
+          width: 20em
+          padding-right: 0
+          
+      .unordered-list
+        padding-top: 15px
+        padding-left: 2em
+        background: #f9f9ff
+    .btn
+      border-radius: .6em
+      background-color: var.$secondary-color
+      transition: all .4s
+      text-transform: uppercase
+      color: #fff
+      min-width: 15em
+      // max-width: 15em
+      padding: 30px
+      display: block
+      &::before
+        background-color: var.$ternary-color
+        height: 105%
+
+    .angle
+      position: absolute
+      font-size: 1.5rem
+      padding-right: .5em 
+      right: 0 
+      top: 0
+      width: 100%
+      height: 100%
+      display: flex
+      justify-content: flex-end
+      align-items: center
+      color: var.$icon-color
+      i
+        transform: rotate(-90deg)
+        transition: all .4s
+
+  // Mobile version
+  @media (max-width: 720px) 
+    .kegiatan .btn
+      min-width: 13em
+
+// KITAB
+.kitab-wrapper
+  margin-bottom: 120px
+  .owl-prev, .owl-next
+    position: absolute
+    top: 30%
+    span
+      font-size: 60px
+      color: #787878
+  .owl-prev
+    left: -45px
+  .owl-next
+    right: -45px
+  
+  .owl-theme 
+    height: 21em
+    margin-bottom: 2em
+    .owl-stage-outer
+      height: 100%
+      .owl-stage
+        margin-top: 2em
+        position: absolute
+        display: flex !important
+        align-content: center
+        height: 100%
+
+    .owl-nav [class*="owl-"]:hover
+      background: transparent
+      
+  // Mobile version
+  @media (max-width: 720px) 
+    .owl-prev
+      left: 0
+    .owl-next
+      right: 0
+
+
+  .item
+    display: grid
+    justify-content: center !important
+    position: relative 
+    
+  .card 
+    border: none
+    border-radius: .6em
+    overflow: hidden
+    width: 95%
+    // height: 17.5em
+    box-shadow: 0 0 10px 1px rgba(108, 88, 219, 0.7)
+    transition: all .4s
+    cursor: pointer
+    &:hover
+      box-shadow: 3px 3px 23px rgba(108, 88, 219, 0.8) 
+
+    @media( max-width: 720px)
+      width: 100%
+
+  .card-img-overlay
+    padding: 100% 0 0 .5em
+    // position: relative
+    background: linear-gradient(180deg, rgba(255,255,255,0) 20%, rgba(0,0,0,1) 84%)   
+    // background: linear-gradient(360deg, rgba(0, 0, 0, .6) 10%, rgba(0, 0, 0, 0) 100%)
+    
+    .title, .author
+      text-shadow: 1px 1px 3px #000
+      position: absolute
+
+    .title
+      font-size: 1.1rem
+      font-weight: bold
+      bottom: 1.6em
+      color: var.$light-color
+    
+    .author
+      color: var.$primary-color
+      font-size: .7rem
+      bottom: 1.5em
+
+  .modal
+    .modal-dialog
+      // width: 55%
+      // margin: 3px
+      @media (max-width: 720px)
+        width: 95.5%
+    .modal-content
+      padding: 0
+      margin: 0
+      border-radius: .6em
+      &:hover::before
+        display: none
+      &:hover
+        box-shadow: none
+
+    .modal-body
+      padding: 1.5em
+      .row
+        justify-content: center
+        >div:first-child
+          margin-bottom: 2em
+        .img-wrapper
+          height: 100%
+          border-radius: .6em
+          overflow: hidden
+          img
+            width: 100%
+            height: 100%
+            object-fit: cover
+
+        .table-responsive
+          overflow-x: auto
+          .table
+            min-width: 23em
+          td
+            padding: 0
+            p
+              text-align: left
+              margin-bottom: 8px
+              .fa
+                font-size: 1.1rem
+                color: var.$icon-color
+            .desc
+              text-align: justify !important
+              // padding-left: 1em
+          td:nth-child(1)
+            width:  8em
+
+    // Mobile version
+    @media (max-width: 720px)
+      .modal-body .row
+        >div:first-child
+          margin-bottom: 2em
+          overflow: hidden
+          height: 18em
+        .img-wrapper
+          // height: 50%
+          
+// EKSTRAKULIKULER
+.kulikuler-wrapper
+  .col-md-5
+    padding-right: 0
+  .card
+    border-radius: .6em
+    overflow: hidden
+    margin-bottom: 2.5em
+    padding: 0
+    box-shadow: 0 0 10px 2px rgba(108, 88, 219, 0.2) 
+    transition: all .4s
+    &:hover
+      border: 1px solid var.$secondary-color
+
+    .card-img
+      height: 100%
+      border-radius: 0
+      border: none
+      object-fit: cover
+    .card-title
+      padding-top: 1em
+      font-size: 1.4rem
+      margin-bottom: 1em
+    .card-text
+      padding-right: 15px
+      font-size: .9rem
+      text-align: justify
+      line-height: 1.5rem
+
+  // Mobile version
+  @media (max-width: 720px)
+    .col-md-7
+      padding: 2em
+    .col-md-5
+      overflow: hidden
+      height: 12em
+    .card
+      .card-title
+        padding-top: 0
+      .card-text
+        padding-right: 0

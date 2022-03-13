@@ -1,7 +1,7 @@
 // Smooth Scrolling
 // >> Handler
 $(document).ready(() => {
-  "use strict"
+  "use strict";
 
   function smoothScroll(e, dest) {
     $("html , body").animate({
@@ -15,13 +15,16 @@ $(document).ready(() => {
 
   // >> Desktop Navbar
   $("#navigation li a").on("click", function (e) {
-    let dest = $($(this).attr("href"));
+    let link = $(this).attr("href").split("\/")
+    let dest = $('#' + link[2]);
+    console.log(link[2]);
     smoothScroll(e, dest);
   });
 
   //  >> Explore btn
   $("#carousel .btn-explore").on("click", function (e) {
     let dest = $($(this).attr("href"));
+    console.log(dest);
     smoothScroll(e, dest);
   });
 
@@ -73,13 +76,13 @@ $(document).ready(() => {
         items: 3,
       },
       1000: {
-        items: 2,
+        items: 4,
       },
     },
   });
 
-  $('.owl-carousel .owl-nav').removeClass('disabled')
-  $('.owl-carousel .owl-dots').removeClass('disabled')
+  $(".owl-carousel .owl-nav").removeClass("disabled");
+  $(".owl-carousel .owl-dots").removeClass("disabled");
   // Owl Carousel Tooltips
   $(".owl-carousel .item .profile-card").tooltip({
     title: "Click for detail",
