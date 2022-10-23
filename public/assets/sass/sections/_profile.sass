@@ -1,5 +1,7 @@
 @use '../variables' as var
 
+$pictures: (1:'uag2.jpeg', 2:'abrem.jpg', 4:'eep.jpg', 5:'vina.jpeg', 6:'ustad.jpg')
+
 // PROFILE
 #profile
   &.pricing-card-area
@@ -145,10 +147,13 @@
           filter: brightness(.75)
           width: 100%
           height: 100%
-          background-image: url(../img/unnamed.jpg)
+          // background-image: url(../img/unnamed.jpg)
           background-position: center
           background-size: cover
           transition: all .4s
+        @each $item, $pict in $pictures
+          &.id#{$item}::after
+            background-image: url(../img/#{$pict})
       
       .btn
         color: #fff
@@ -157,7 +162,7 @@
         position: absolute
         font-size: .85rem
         min-width: 15em
-        max-width: 15em
+        // max-width: 15em
         padding: 1.5em
         display: block
         &::before

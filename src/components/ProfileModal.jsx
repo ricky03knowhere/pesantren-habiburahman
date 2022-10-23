@@ -2,7 +2,7 @@ import React from "react";
 
 function ProfileModal(props) {
   const data = props.data[0];
-
+console.log(data);
   return (
     <div
       class="modal fade"
@@ -15,7 +15,7 @@ function ProfileModal(props) {
         <div class="modal-content single-card">
           <div class="modal-header">
             <h4 class="modal-title" id="exampleModalCenterTitle">
-              {data[2]}
+              {data.name}
             </h4>
             <button
               type="button"
@@ -29,7 +29,7 @@ function ProfileModal(props) {
           <div class="modal-body">
             <div class="row">
               <div class="col-md-4 justify-items-center">
-                <img src={"/assets/img/" + data[1]} alt={data[2]} />
+                <img src={"/assets/img/" + data.picture} alt={data.name} />
               </div>
               <div class="col-md-8">
                 <div class="table-responsive">
@@ -42,7 +42,7 @@ function ProfileModal(props) {
                           </p>
                         </td>
                         <td>
-                          <p>:&emsp;{data[3]}</p>
+                          <p>:&emsp;{data.position}</p>
                         </td>
                       </tr>
                       <tr>
@@ -52,7 +52,7 @@ function ProfileModal(props) {
                           </p>
                         </td>
                         <td>
-                          <p>:&emsp;{data[4]}</p>
+                          <p>:&emsp;{data.birthDate}</p>
                         </td>
                       </tr>
                       <tr>
@@ -62,7 +62,7 @@ function ProfileModal(props) {
                           </p>
                         </td>
                         <td>
-                          <p>:&emsp;{data[5]}</p>
+                          <p>:&emsp;{data.profession}</p>
                         </td>
                       </tr>
                       <tr>
@@ -72,7 +72,7 @@ function ProfileModal(props) {
                           </p>
                         </td>
                         <td>
-                          <p>:&emsp;{data[6]}</p>
+                          <p>:&emsp;{data.address}</p>
                         </td>
                       </tr>
                     </tbody>
@@ -92,7 +92,7 @@ function ProfileModal(props) {
                       <td class="education">
                         <p>:&emsp;</p>
                         <ul>
-                          {data[7].map((i) => (
+                          {data.education.map((i) => (
                             <li>{i}</li>
                           ))}
                         </ul>
@@ -107,13 +107,13 @@ function ProfileModal(props) {
                       <td>
                         <p>
                           :&emsp;
-                          <a href={data[8][0]}>
+                          <a href={data.socials[0]}>
                             <i class="fab fa-instagram"></i>
                           </a>
-                          <a href={data[8][1]}>
+                          <a href={data.socials[1]}>
                             <i class="fa fa-envelope"></i>
                           </a>
-                          <a href={data[8][2]}>
+                          <a href={data.socials[2]}>
                             <i class="fab fa-facebook-square"></i>
                           </a>
                         </p>

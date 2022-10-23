@@ -8,10 +8,10 @@ function Footer() {
           <div class="col-md-2">
             <div class="brand-wrapper">
               <img
-                src="assets/img/logo.png"
+                src="assets/img/logo2.png"
                 alt="logo"
-                width="140"
-                height="50"
+                width="80"
+                // height="50"
               />
               <br />
             </div>
@@ -60,10 +60,10 @@ function Footer() {
               <a href="https://ricky03knowhere.github.io" target="_blank">
                 @ricky_knowhere
               </a>{" "}
-              | Dengan Template dari{" "}
+              {/* | Dengan Template dari{" "}
               <a href="https://colorlib.com/" target="_blank">
                 Colorlib
-              </a>
+              </a> */}
             </p>
           </div>
         </div>

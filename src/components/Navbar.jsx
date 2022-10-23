@@ -18,7 +18,12 @@ function Navbar() {
               <div className="col-xl-2 col-lg-2 col-md-2">
                 <div className="logo">
                   <Link to="/">
-                    <img src="/assets/img/logo.png" alt="logo" />
+                    <img
+                      src="/assets/img/logo2.png"
+                      alt="logo"
+                      width={"70"}
+                      className="p-1"
+                    />
                   </Link>
                 </div>
               </div>
@@ -36,7 +41,9 @@ function Navbar() {
                             : ""
                         }
                       >
-                        <Link to="home/carousel">Home</Link>
+                        <Link to="home/carousel" className="tagmenu">
+                          Home
+                        </Link>
                       </li>
                       <li
                         className={
@@ -45,7 +52,9 @@ function Navbar() {
                             : ""
                         }
                       >
-                        <Link to="home/profile">Profil</Link>
+                        <Link to="home/profile" className="tagmenu">
+                          Profil
+                        </Link>
                         <ul className="submenu">
                           <li>
                             <Link to="home/profile">Profil Pesantren</Link>
@@ -65,7 +74,9 @@ function Navbar() {
                             : ""
                         }
                       >
-                        <Link to="kurikulum">Kurikulum</Link>
+                        <Link to="kurikulum" className="tagmenu">
+                          Kurikulum
+                        </Link>
                         <ul className="submenu">
                           <li>
                             <Link to="kurikulum/jadwal">Jadwal Kegiatan</Link>
@@ -89,7 +100,9 @@ function Navbar() {
                             : ""
                         }
                       >
-                        <Link to="info">Info</Link>
+                        <Link to="info" className="tagmenu">
+                          Info
+                        </Link>
                         <ul className="submenu">
                           <li>
                             <Link to="info/lokasi">Alamat</Link>
@@ -109,7 +122,9 @@ function Navbar() {
                             : ""
                         }
                       >
-                        <Link to="pendaftaran">Pendaftaran</Link>
+                        <Link to="pendaftaran" className="tagmenu">
+                          Pendaftaran
+                        </Link>
                         <ul className="submenu">
                           <li>
                             <Link to="pendaftaran/syarat">
@@ -125,6 +140,22 @@ function Navbar() {
                             </Link>
                           </li>
                         </ul>
+                      </li>
+                      <li
+                        className={
+                          url === "" || url === "login" || url === "login"
+                            ? "active"
+                            : ""
+                        }
+                      >
+                        <Link
+                          to="#!"
+                          className="tagmenu"
+                          data-toggle="modal"
+                          data-target="#modal-99"
+                        >
+                          Login
+                        </Link>
                       </li>
                     </ul>
                   </nav>

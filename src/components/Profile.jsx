@@ -8,13 +8,10 @@ function Profile() {
 
   function loadModal(e) {
     const id = e.target.dataset.id;
-    let pengajar = profiles.filter((prof) => prof[0] == id);
+    let pengajar = profiles.filter((prof) => prof.id == id);
 
-    setModal((modal) => {
-      modal = <ProfileModal data={pengajar} />;
-      console.log("ok");
-      return modal;
-    });
+    setModal("")
+    setModal(<ProfileModal data={pengajar} />);
   }
 
   let details = about[1].map((detail) => (
@@ -32,16 +29,16 @@ function Profile() {
   ));
   // console.log(profiles);
   let pengajar = profiles.map((profile) => (
-    <div className="item" key={profile[0]}>
+    <div className="item" key={profile.id}>
       <div
         className="single-card profile-card"
         data-toggle="modal"
         data-target="#modal-1"
         onClick={loadModal}
       >
-        <div className="img-card" data-id={profile[0]}></div>
-        <a className="btn card-btn1" data-id={profile[0]}>
-          {profile[2]}
+        <div className={"img-card id" + profile.id} data-id={profile.id}></div>
+        <a className="btn card-btn1" data-id={profile.id}>
+          {profile.name}
         </a>
       </div>
     </div>
@@ -90,7 +87,11 @@ function Profile() {
         </div>
 
         {/* <!--PENGAJAR START--> */}
-        <Element className="row pengajar-wrapper element" id="pengajar" name="pengajar">
+        <Element
+          className="row pengajar-wrapper element"
+          id="pengajar"
+          name="pengajar"
+        >
           <h3 className="sub-title">Daftar Pengajar</h3>
 
           <div className="owl-carousel owl-theme">{pengajar}</div>

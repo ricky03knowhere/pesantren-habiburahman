@@ -38,18 +38,18 @@ let kegiatan3 = [
 
 let ekstrakulikuler = [
   [
-    "SAPALA",
-    "unnamed.jpg",
+    "SAPALA (Santri Pecinta Alam)",
+    "sapala.jpg",
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum voluptatum placeat aspernatur pariatur magni distinctio!",
   ],
   [
     "Hadroh Marawis",
-    "unnamed.jpg",
+    "hadroh.jpg",
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum voluptatum placeat aspernatur pariatur magni distinctio!",
   ],
   [
     "Futsal",
-    "unnamed.jpg",
+    "futsal.jpg",
     "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum voluptatum placeat aspernatur pariatur magni distinctio!",
   ],
 ];

@@ -240,8 +240,12 @@
       var scroll = $(window).scrollTop();
       if (scroll < 245) {
         $(".header-sticky").removeClass("sticky-bar");
+        $("#navbar .tagmenu").addClass("shad");
+        $("#navbar .logo img").addClass("shad");
       } else {
         $(".header-sticky").addClass("sticky-bar");
+        $("#navbar .tagmenu").removeClass("shad");
+        $("#navbar .logo img").removeClass("shad");
       }
     });
 
@@ -264,7 +268,7 @@
       animation: 'fade', // Fade, slide, none
       animationInSpeed: 200, // Animation in speed (ms)
       animationOutSpeed: 200, // Animation out speed (ms)
-      scrollText: '<i class="ti-arrow-up"></i>', // Text for element
+      scrollText: '<i class="fa fa-arrow-up"></i>', // Text for element
       activeOverlay: false, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
     });
 

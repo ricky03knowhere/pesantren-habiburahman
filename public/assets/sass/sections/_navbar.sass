@@ -6,9 +6,22 @@
   .slicknav_icon-bar
     background: var.$indigo-color !important
     border-radius: 1em
+  .logo .shad
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5))
   .main-menu
-    a
+    .tagmenu
       color: #4b9968
+      &.shad
+        color: var.$primary-color
+        text-stroke: .5px #0008
+        -webkit-text-stroke: .5px #0008
+        text-shadow: 0px 0px 3px #0006
+    .submenu a
+      color: #4b9968
+      text-stroke: 0 t#0000 
+      -webkit-text-stroke: 0 #0000
+      text-shadow: 0px 0px 0px #0006
+
       &::before
         background: var.$indigo-color
     #navigation .submenu

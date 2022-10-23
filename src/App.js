@@ -1,6 +1,7 @@
 import React, { Component, useEffect } from "react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Footer from "./components/Footer";
+import LoginModal from "./components/LoginModal";
 import Navbar from "./components/Navbar";
 import Wave2 from "./components/waves/Wave2";
 import Home from "./pages/Home";
@@ -30,6 +31,7 @@ export class App extends Component {
     return (
       <BrowserRouter>
         <Navbar />
+        <LoginModal />
         <main>
           <Routes>
             <Route exact path="/" element={<Home />} />
