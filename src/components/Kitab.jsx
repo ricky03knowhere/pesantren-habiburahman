@@ -1,13 +1,15 @@
 import React, { useState } from "react";
-import { kitab } from "../database/kurikulum";
+// import { kitab } from "../database/kurikulum";
 import KitabModal from "./KitabModal";
 
-function Kitab() {
+function Kitab({ data: kitab }) {
   let [modal, setModal] = useState("");
-
+  
   function loadModal(e) {
     const id = e.target.dataset.id;
-    const data = kitab.filter((item) => item[0] == id);
+    const data = kitab.filter((item) => kitab.indexOf(item) == id);
+    console.log("data ==>> ", data);
+    
     console.log(e.target.dataset);
     setModal((modal) => {
       modal = <KitabModal kitab={data} />;
@@ -16,7 +18,7 @@ function Kitab() {
     });
   }
 
-  let items = kitab.map((data) => (
+  let items = kitab.map((data, i) => (
     <div class="item">
       <div
         class="card mb-5"
@@ -24,10 +26,14 @@ function Kitab() {
         data-target="#modal-1"
         onClick={loadModal}
       >
-        <img src={"/assets/img/" + data[5]} class="card-img" alt={data[1]} />
-        <div class="card-img-overlay" data-id={data[0]}>
-          <h4 class="text-white title">{data[1]}</h4>
-          <span class="author">{data[2]}</span>
+        <img
+          src={"/assets/img/" + data.picture}
+          class="card-img"
+          alt={data.title}
+        />
+        <div class="card-img-overlay" data-id={i}>
+          <h4 class="text-white title">{data.title}</h4>
+          <span class="author">{data.author}</span>
         </div>
       </div>
     </div>

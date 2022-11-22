@@ -9,12 +9,35 @@ const appendScript = (scriptToAppend) => {
 
 const changeTitle = (title) => {
   // useEffect(() => {
-    const prevTitle = "Pesantren Habiburrahman | " + document.title;
-    document.title = "Pesantren Habiburrahman | " + title;
-    return () => {
-      document.title = prevTitle;
-    }
+  const prevTitle = "Pesantren Habiburrahman | " + document.title;
+  document.title = "Pesantren Habiburrahman | " + title;
+  return () => {
+    document.title = prevTitle;
+  };
   // });
 };
 
-export { appendScript, changeTitle };
+const getBirthDate = (date) => {
+  const month = [
+    "Januari",
+    "Februari",
+    "Maret",
+    "April",
+    "Mei",
+    "Juni",
+    "Juli",
+    "Agustus",
+    "September",
+    "Oktober",
+    "November",
+    "Desember",
+  ];
+
+  const getDate = new Date(date);
+
+  return `${getDate.getDate()} ${
+    month[getDate.getMonth()]
+  } ${getDate.getFullYear()}`;
+};
+
+export { appendScript, changeTitle, getBirthDate };

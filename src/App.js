@@ -7,6 +7,8 @@ import Wave2 from "./components/waves/Wave2";
 import Home from "./pages/Home";
 import Info from "./pages/Info";
 import Kurikulum from "./pages/Kurikulum";
+import AppRoute from "./pages/layouts/AppRoute";
+import MainLayout from "./pages/layouts/MainLayout";
 import Pendaftaran from "./pages/Pendaftaran";
 import { appendScript } from "./utils/utils";
 
@@ -47,5 +49,31 @@ export class App extends Component {
     );
   }
 }
+
+{/* <AppRoute exact path="/" component={<Home />} layout={<MainLayout />} />
+<AppRoute
+  exact
+  path="/home"
+  component={<Home />}
+  layout={<MainLayout />}
+/>
+<AppRoute
+  exact
+  path="/kurikulum"
+  component={<Kurikulum />}
+  layout={<MainLayout />}
+/>
+<AppRoute
+  exact
+  path="/info"
+  component={<Info />}
+  layout={<MainLayout />}
+/>
+<AppRoute
+  exact
+  path="/pendaftaran"
+  component={<Pendaftaran />}
+  layout={<MainLayout />}
+/> */}
 
 export default App;

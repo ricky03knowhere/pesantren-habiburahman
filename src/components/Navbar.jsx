@@ -142,11 +142,11 @@ function Navbar() {
                         </ul>
                       </li>
                       <li
-                        className={
-                          url === "" || url === "login" || url === "login"
-                            ? "active"
-                            : ""
-                        }
+                        // className={
+                        //   url === "" || url === "login" || url === "login"
+                        //     ? "active"
+                        //     : ""
+                        // }
                       >
                         <Link
                           to="#!"

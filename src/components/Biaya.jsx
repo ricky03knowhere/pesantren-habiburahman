@@ -1,7 +1,16 @@
-import React from "react";
-import { biayaPutra, biayaPutri } from "../database/pendaftaran";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 
 function Biaya() {
+  const [biaya, setBiaya] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4001/info/biaya")
+      .then(({ data }) => setBiaya(data))
+      .catch((err) => console.log(err));
+  }, []);
+
   function totalCotainer(val) {
     return (
       <div class="table-head">
@@ -19,23 +28,25 @@ function Biaya() {
 
   let total;
 
-  function fillTable(variable) {
+  function fillTable(type) {
     total = 0;
-    return variable.map((data, i) => {
-      total += data[1];
-      return (
-        <div class="table-row">
-          <div class="serial">{i + 1}</div>
-          <div class="percentage">{data[0]}</div>
-          <div class="visit">
-            {data[1].toLocaleString("id-ID", {
-              style: "currency",
-              currency: "IDR",
-            })}
+    return biaya
+      .filter((el) => el.type === type)
+      .map((data, i) => {
+        total += data.price;
+        return (
+          <div class="table-row">
+            <div class="serial">{i + 1}</div>
+            <div class="percentage">{data.desc}</div>
+            <div class="visit">
+              {data.price.toLocaleString("id-ID", {
+                style: "currency",
+                currency: "IDR",
+              })}
+            </div>
           </div>
-        </div>
-      );
-    });
+        );
+      });
   }
 
   return (
@@ -54,7 +65,7 @@ function Biaya() {
                 <div class="percentage">Rincian</div>
                 <div class="visit">Biaya</div>
               </div>
-              {fillTable(biayaPutra)}
+              {fillTable("putra")}
               {totalCotainer(total)}
             </div>
           </div>
@@ -72,7 +83,7 @@ function Biaya() {
                 <div class="percentage">Rincian</div>
                 <div class="visit">Biaya</div>
               </div>
-              {fillTable(biayaPutri)}
+              {fillTable("putri")}
               {totalCotainer(total)}
             </div>
           </div>

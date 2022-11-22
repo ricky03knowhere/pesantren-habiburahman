@@ -70,6 +70,26 @@
   border-radius: 0.6em;
 }
 
+#myTab .nav-link {
+  color: #495057;
+}
+
+#myTabContent .form-control {
+  border-radius: 0.6em;
+}
+#myTabContent .boxed-btn {
+  padding: 1em 1.8em !important;
+  border-radius: 0.6em;
+  color: #A56DF2;
+}
+#myTabContent .boxed-btn:hover {
+  background: #A56DF2;
+}
+#myTabContent #qrcode .img-thumbnail {
+  border-radius: 0.6em;
+  background: black;
+}
+
 #carousel.carousel .carousel-item {
   height: 110vh;
 }
@@ -310,19 +330,19 @@
   background-size: cover;
   transition: all 0.4s;
 }
-#profile .item .profile-card .img-card.id1::after {
+#profile .item .profile-card .img-card.id0::after {
   background-image: url(../img/uag2.jpeg);
 }
-#profile .item .profile-card .img-card.id2::after {
+#profile .item .profile-card .img-card.id1::after {
   background-image: url(../img/abrem.jpg);
 }
-#profile .item .profile-card .img-card.id4::after {
+#profile .item .profile-card .img-card.id2::after {
   background-image: url(../img/eep.jpg);
 }
-#profile .item .profile-card .img-card.id5::after {
+#profile .item .profile-card .img-card.id3::after {
   background-image: url(../img/vina.jpeg);
 }
-#profile .item .profile-card .img-card.id6::after {
+#profile .item .profile-card .img-card.id4::after {
   background-image: url(../img/ustad.jpg);
 }
 #profile .item .profile-card .btn {

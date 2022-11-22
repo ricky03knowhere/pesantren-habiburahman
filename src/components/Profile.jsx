@@ -1,18 +1,12 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import { Element } from "react-scroll";
-import { about, profiles } from "../database/profile";
+import { about } from "../database/profile";
 import ProfileModal from "./ProfileModal";
 
 function Profile() {
-  const [modal, setModal] = useState("");
-
-  function loadModal(e) {
-    const id = e.target.dataset.id;
-    let pengajar = profiles.filter((prof) => prof.id == id);
-
-    setModal("")
-    setModal(<ProfileModal data={pengajar} />);
-  }
+  const [modal, setModal] = useState('');
+  const [pengajar, setPengajar] = useState([]);
 
   let details = about[1].map((detail) => (
     <tr>
@@ -27,22 +21,43 @@ function Profile() {
       </td>
     </tr>
   ));
-  // console.log(profiles);
-  let pengajar = profiles.map((profile) => (
-    <div className="item" key={profile.id}>
-      <div
-        className="single-card profile-card"
-        data-toggle="modal"
-        data-target="#modal-1"
-        onClick={loadModal}
-      >
-        <div className={"img-card id" + profile.id} data-id={profile.id}></div>
-        <a className="btn card-btn1" data-id={profile.id}>
-          {profile.name}
-        </a>
+
+  const loadModal = (e) => {
+    setModal("");
+    const id = e.target.dataset.id;
+    let profile = pengajar.filter((prof) => pengajar.indexOf(prof) == id);
+    setModal(<ProfileModal data={profile} />);
+  };
+
+  const profileGenerate = (pengajar) => {
+    console.log("pengajar ready ==>> ", pengajar);
+    return pengajar.map((profile, i) => (
+      <div className="item" key={i}>
+        <div
+          className="single-card profile-card"
+          data-toggle="modal"
+          data-target="#modal-1"
+          onClick={loadModal}
+        >
+          <div className={"img-card id" + i} data-id={i}></div>
+          <a className="btn card-btn1" data-id={i}>
+            {profile.name}
+          </a>
+        </div>
       </div>
-    </div>
-  ));
+    ));
+  };
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:4001/info/pengajar")
+      .then(({ data }) => {
+        console.log("pengajar ==>> ", data.map(el => el.picture));
+        setPengajar(data);
+        // profileGenerate(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <section className="pricing-card-area" id="profile">
@@ -94,7 +109,7 @@ function Profile() {
         >
           <h3 className="sub-title">Daftar Pengajar</h3>
 
-          <div className="owl-carousel owl-theme">{pengajar}</div>
+          <div className="owl-carousel owl-theme">{profileGenerate(pengajar)}</div>
         </Element>
         {/* <!--PENGAJAR END--> */}
       </div>

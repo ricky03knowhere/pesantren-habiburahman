@@ -1,21 +1,24 @@
 import React from "react";
-import { kegiatan1, kegiatan2, kegiatan3 } from "../database/kurikulum";
 
-function Kegiatan() {
-  let harian = kegiatan1.map((data, i) => (
-    <div class="table-row">
-      <div class="serial">{i + 1}</div>
-      <div class="visit">{data[0]}</div>
-      <div class="percentage">{data[1]}</div>
-    </div>
-  ));
+function Kegiatan({ data }) {
+  let harian = data
+    .filter((el) => el.periode === "harian")
+    .map((data, i) => (
+      <div class="table-row">
+        <div class="serial">{i + 1}</div>
+        <div class="visit">{data.desc[0]}</div>
+        <div class="percentage">{data.desc[1]}</div>
+      </div>
+    ));
 
-  function fillKegiatan(variable) {
-    return variable.map((data) => <li>{data}</li>);
+  function fillKegiatan(periode) {
+    return data
+      .filter((el) => el.periode === periode)
+      .map((data) => <li>{data.desc[1]}</li>);
   }
 
-  let mingguan = fillKegiatan(kegiatan2);
-  let tahunan = fillKegiatan(kegiatan3);
+  let mingguan = fillKegiatan("mingguan");
+  let tahunan = fillKegiatan("tahunan");
   return (
     <div class="row justify-content-center kegiatan" id="jadwal">
       <div class="col-md-11">

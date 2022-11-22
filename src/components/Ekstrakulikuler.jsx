@@ -1,21 +1,22 @@
 import React from "react";
-import { ekstrakulikuler } from "../database/kurikulum";
 
-function Ekstrakulikuler() {
-  let items = ekstrakulikuler.map((data) => (
+function Ekstrakulikuler({data}) {
+  console.log("data ==>> ", data);
+
+  let items = data.map((data) => (
     <div class="col-md-6">
       <div class="card">
         <div class="row">
           <div class="col-md-5">
             <img
               class="card-img"
-              src={"/assets/img/" + data[1]}
-              alt={data[0]}
+              src={"/assets/img/" + data.picture}
+              alt={data.name}
             />
           </div>
           <div class="col-md-7">
-            <h5 class="card-title">{data[0]}</h5>
-            <p class="card-text">{data[2]}</p>
+            <h5 class="card-title">{data.name}</h5>
+            <p class="card-text">{data.desc}</p>
           </div>
         </div>
       </div>

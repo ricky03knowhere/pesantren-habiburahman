@@ -1,8 +1,9 @@
 import React from "react";
+import { getBirthDate } from "../utils/utils";
 
-function ProfileModal(props) {
-  const data = props.data[0];
-console.log(data);
+function ProfileModal({ data }) {
+  data = data[0];
+  console.log(data);
   return (
     <div
       class="modal fade"
@@ -52,7 +53,7 @@ console.log(data);
                           </p>
                         </td>
                         <td>
-                          <p>:&emsp;{data.birthDate}</p>
+                          <p>:&emsp;{getBirthDate(data.birthDate)}</p>
                         </td>
                       </tr>
                       <tr>

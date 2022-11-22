@@ -1,38 +1,20 @@
-// Persyaratan
-let persyaratan = [
+const persyaratan = [
   "Foto Copy KTP, KK & Akte Kelahiran",
-  "Pas Photo 3 x 4 (3)",
+  "Pas Photo 3 x 4 (3) lembar",
   "Mengisi Formulir",
   "Mengikuti Tes",
   "Siap Mentaati Peraturan",
   "Membawa Koko Putih",
 ];
 
-// Alur
-let alurPendaftaran = [
-  "Cras Lorem, ipsum dolor sit amet consectetur adipisicing.justo odio",
-  "Dapibus ac facilisis in <a href='#'>Lorem ipsum dolor sit amet consectetur</a>.Lorem, ipsum dolor sit amet consectetur adipisicing.",
-  "Morbi leo risusLorem, ipsum dolor sit amet consectetur adipisicing.",
-  "Porta ac consectetur acLorem, ipsum dolor sit amet consectetur adipisicing.",
-  "Vestibulum at erosLorem, ipsum dolor sit amet consectetur adipisicing.",
+const alurPendaftaran = [
+  'Melakukan pendaftaran online melalui situs resmi: <a href="https://pesantren-habiburahman.com">https://pesantren-habiburahman.com</a>',
+  "Waktu Pendaftaran Calon Sasntri Dibuka pada hari Selasa, 1 Ramadhan 1444 / 23 Maret 2023, Ditutup pada hari Jumat, 23 Ramadhan 1444 / 14 April 2023.",
+  "Melunasi biaya pendaftaran",
+  "Melengkapi seluruh formulir pendaftaran online.",
+  "Mendapatkan nomor ujian dari halaman pendaftaran online.",
+  "Hadir di pondok yang telah ditentukan pada saat pelaksanaan ujian lisan tanggal 4 – 10 Syawwal 1444/ 24 – 30 April 2023.",
+  "Melakukan tes kesehatan di Balai Kesehatan Pondok.",
 ];
 
-// Biaya
-let biayaPutra = [
-  ["Administrasi", 200000],
-  ["Syahriyah", 50000],
-  ["Kitab", 200000],
-  ["Jas Almamater", 250000],
-  ["Uang Kesehatan", 50000],
-  ["Uang Makan", 400000],
-];
-
-let biayaPutri = [
-  ["Administrasi", 200000],
-  ["Syahriyah", 50000],
-  ["Kitab", 200000],
-  ["Uang Kesehatan", 50000],
-  ["Uang Makan", 400000],
-];
-
-export { persyaratan, alurPendaftaran, biayaPutra, biayaPutri };
+export { persyaratan, alurPendaftaran };
