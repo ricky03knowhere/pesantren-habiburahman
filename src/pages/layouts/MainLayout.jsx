@@ -5,9 +5,9 @@ import LoginModal from "../../components/LoginModal";
 import Navbar from "../../components/Navbar";
 import Wave2 from "../../components/waves/Wave2";
 
-const MainLayout = ({ children }) => (
+const MainLayout = ({ children, user }) => (
   <>
-    <Navbar />
+    <Navbar user={user} />
     <LoginModal />
     <main>{children}</main>
     <Wave2 />

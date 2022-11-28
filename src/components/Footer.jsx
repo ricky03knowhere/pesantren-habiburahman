@@ -8,7 +8,7 @@ function Footer() {
           <div class="col-md-2">
             <div class="brand-wrapper">
               <img
-                src="assets/img/logo2.png"
+                src="/assets/img/logo2.png"
                 alt="logo"
                 width="80"
                 // height="50"

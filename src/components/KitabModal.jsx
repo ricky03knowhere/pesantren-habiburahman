@@ -1,13 +1,14 @@
 import React from "react";
+import { SERVER_URL } from "../utils/utils";
 
-function KitabModal(props) {
-  let data = props.kitab[0];
-  
+function KitabModal({ kitab }) {
+  kitab = kitab[0];
+
   return (
     <div
       class="modal fade"
       id="modal-1"
-      tabindex="-1"
+      tabindex={-1}
       role="dialog"
       aria-labelledby="exampleModalCenterTitle"
     >
@@ -15,7 +16,7 @@ function KitabModal(props) {
         <div class="modal-content single-card">
           <div class="modal-header">
             <h4 class="modal-title" id="exampleModalCenterTitle">
-              {data[1]}
+              {kitab.title}
             </h4>
             <button
               type="button"
@@ -30,7 +31,10 @@ function KitabModal(props) {
             <div class="row justify-content-center">
               <div class="col-md-4">
                 <div class="img-wrapper">
-                  <img src={"/assets/img/" + data[5]} alt={data[1]} />
+                  <img
+                    src={`${SERVER_URL}images/${kitab.picture}`}
+                    alt={kitab.picture}
+                  />
                 </div>
               </div>
               <div class="col-md-8">
@@ -44,7 +48,7 @@ function KitabModal(props) {
                           </p>
                         </td>
                         <td>
-                          <p>:&emsp;{data[2]}</p>
+                          <p>:&emsp;{kitab.author}</p>
                         </td>
                       </tr>
                       <tr>
@@ -54,7 +58,7 @@ function KitabModal(props) {
                           </p>
                         </td>
                         <td>
-                          <p>:&emsp;{data[3]}</p>
+                          <p>:&emsp;{kitab.genre}</p>
                         </td>
                       </tr>
                       <tr>
@@ -67,13 +71,11 @@ function KitabModal(props) {
                           <p>:</p>
                         </td>
                       </tr>
-                      <tr>
-                        <td colspan="2">
-                          <p class="desc">&emsp;{data[4]}</p>
-                        </td>
-                      </tr>
                     </tbody>
                   </table>
+                  <p class="desc">
+                    &emsp;{kitab.desc}
+                  </p>
                 </div>
               </div>
             </div>

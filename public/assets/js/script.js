@@ -91,6 +91,13 @@ $(document).ready(() => {
     template: '<div class="tooltip" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>',
   });
 
+  $("#kitab .col-md-3 .card").tooltip({
+    title: "Click for detail",
+    delay: 200,
+    offset: 10,
+    template: '<div class="tooltip" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>',
+  });
+
   // <<--- Copyright Year --->>
   let year = new Date().getFullYear();
   $("#footer .year").html(year);

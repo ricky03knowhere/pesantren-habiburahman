@@ -69,6 +69,12 @@
 #navbar .main-menu #navigation .submenu {
   border-radius: 0.6em;
 }
+#navbar .main-menu #navigation > li:nth-last-of-type(2) {
+  margin-right: 0;
+}
+#navbar .main-menu #navigation > li:nth-last-of-type(1) a {
+  padding-left: 0;
+}
 
 #myTab .nav-link {
   color: #495057;
@@ -672,6 +678,7 @@
 }
 .kitab-wrapper .modal .modal-body .row .table-responsive .table {
   min-width: 23em;
+  margin-bottom: 0;
 }
 .kitab-wrapper .modal .modal-body .row .table-responsive td {
   padding: 0;
@@ -684,7 +691,7 @@
   font-size: 1.1rem;
   color: #2b044d;
 }
-.kitab-wrapper .modal .modal-body .row .table-responsive td .desc {
+.kitab-wrapper .modal .modal-body .row .table-responsive .desc {
   text-align: justify !important;
 }
 .kitab-wrapper .modal .modal-body .row .table-responsive td:nth-child(1) {

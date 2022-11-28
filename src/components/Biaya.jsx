@@ -1,12 +1,13 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { SERVER_URL } from "../utils/utils.js";
 
 function Biaya() {
   const [biaya, setBiaya] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:4001/info/biaya")
+      .get(SERVER_URL + "info/biaya")
       .then(({ data }) => setBiaya(data))
       .catch((err) => console.log(err));
   }, []);

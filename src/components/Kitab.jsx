@@ -1,25 +1,21 @@
 import React, { useState } from "react";
+import { SERVER_URL } from "../utils/utils";
 // import { kitab } from "../database/kurikulum";
 import KitabModal from "./KitabModal";
 
 function Kitab({ data: kitab }) {
-  let [modal, setModal] = useState("");
-  
+  const [modal, setModal] = useState("");
+
   function loadModal(e) {
+    setModal("");
     const id = e.target.dataset.id;
     const data = kitab.filter((item) => kitab.indexOf(item) == id);
     console.log("data ==>> ", data);
-    
-    console.log(e.target.dataset);
-    setModal((modal) => {
-      modal = <KitabModal kitab={data} />;
-      console.log("ok");
-      return modal;
-    });
+    setModal(<KitabModal kitab={data} />);
   }
 
   let items = kitab.map((data, i) => (
-    <div class="item">
+    <div class="col-md-3" key={i}>
       <div
         class="card mb-5"
         data-toggle="modal"
@@ -27,7 +23,7 @@ function Kitab({ data: kitab }) {
         onClick={loadModal}
       >
         <img
-          src={"/assets/img/" + data.picture}
+          src={`${SERVER_URL}images/${data.picture}`}
           class="card-img"
           alt={data.title}
         />
@@ -44,11 +40,11 @@ function Kitab({ data: kitab }) {
       <div class="col-md-11">
         <h3 class="sub-title">Kitab yang Dikaji</h3>
 
-        <div class="owl-carousel owl-theme">{items}</div>
+        <div class="row">{items}</div>
       </div>
 
       {/* <!-- MODAL START --> */}
-      {modal}
+      {modal ? modal : ""}
       {/* <!-- MODAL END --> */}
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PageTitle from "../components/PageTitle";
-import { changeTitle } from "../utils/utils";
+import { changeTitle } from "../utils/utils.js";
 
 class Info extends Component {
   componentDidMount() {

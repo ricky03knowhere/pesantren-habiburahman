@@ -1,11 +1,23 @@
 import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { SERVER_URL } from "../utils/utils";
 // import { Link as Link, animateScroll as scroll } from "react-scroll";
 
-function Navbar() {
+function Navbar({ user }) {
   const { pathname, hash } = useLocation();
   const splitLocation = pathname.split("/");
   const url = splitLocation[1] + hash;
+
+  const handleLogout = () => {
+    console.log("ok");
+    localStorage.clear();
+    window.location.href = "/";
+  };
+
+  const handleClick = () => {
+    if (window.confirm("Are you sure to logout,.?")) return handleLogout();
+    else return null;
+  };
 
   return (
     <header>
@@ -41,7 +53,7 @@ function Navbar() {
                             : ""
                         }
                       >
-                        <Link to="home/carousel" className="tagmenu">
+                        <Link to="/home/carousel" className="tagmenu">
                           Home
                         </Link>
                       </li>
@@ -52,15 +64,15 @@ function Navbar() {
                             : ""
                         }
                       >
-                        <Link to="home/profile" className="tagmenu">
+                        <Link to="/home/profile" className="tagmenu">
                           Profil
                         </Link>
                         <ul className="submenu">
                           <li>
-                            <Link to="home/profile">Profil Pesantren</Link>
+                            <Link to="/home/profile">Profil Pesantren</Link>
                           </li>
                           <li>
-                            <Link to="home/pengajar">Profil Pengajar</Link>
+                            <Link to="/home/pengajar">Profil Pengajar</Link>
                           </li>
                         </ul>
                       </li>
@@ -74,18 +86,18 @@ function Navbar() {
                             : ""
                         }
                       >
-                        <Link to="kurikulum" className="tagmenu">
+                        <Link to="/kurikulum" className="tagmenu">
                           Kurikulum
                         </Link>
                         <ul className="submenu">
                           <li>
-                            <Link to="kurikulum/jadwal">Jadwal Kegiatan</Link>
+                            <Link to="/kurikulum/jadwal">Jadwal Kegiatan</Link>
                           </li>
                           <li>
-                            <Link to="kurikulum/kitab">Kitab yang Dikaji</Link>
+                            <Link to="/kurikulum/kitab">Kitab yang Dikaji</Link>
                           </li>
                           <li>
-                            <Link to="kurikulum/kulikuler">
+                            <Link to="/kurikulum/kulikuler">
                               Ekstrakulikuler
                             </Link>
                           </li>
@@ -100,15 +112,15 @@ function Navbar() {
                             : ""
                         }
                       >
-                        <Link to="info" className="tagmenu">
+                        <Link to="/info" className="tagmenu">
                           Info
                         </Link>
                         <ul className="submenu">
                           <li>
-                            <Link to="info/lokasi">Alamat</Link>
+                            <Link to="/info/lokasi">Alamat</Link>
                           </li>
                           <li>
-                            <Link to="info/kontak">Kontak</Link>
+                            <Link to="/info/kontak">Kontak</Link>
                           </li>
                         </ul>
                       </li>
@@ -122,41 +134,82 @@ function Navbar() {
                             : ""
                         }
                       >
-                        <Link to="pendaftaran" className="tagmenu">
+                        <Link to="/pendaftaran" className="tagmenu">
                           Pendaftaran
                         </Link>
                         <ul className="submenu">
                           <li>
-                            <Link to="pendaftaran/syarat">
+                            <Link to="/pendaftaran/syarat">
                               Syarat Pendafraran
                             </Link>
                           </li>
                           <li>
-                            <Link to="pendaftaran/alur">Alur Pendaftaran</Link>
+                            <Link to="/pendaftaran/alur">Alur Pendaftaran</Link>
                           </li>
                           <li>
-                            <Link to="pendaftaran/biaya">
+                            <Link to="/pendaftaran/biaya">
                               Biaya Pendaftaran
                             </Link>
                           </li>
                         </ul>
                       </li>
-                      <li
+                      {!user ? (
+                        <li
                         // className={
                         //   url === "" || url === "login" || url === "login"
                         //     ? "active"
                         //     : ""
                         // }
-                      >
-                        <Link
-                          to="#!"
-                          className="tagmenu"
-                          data-toggle="modal"
-                          data-target="#modal-99"
                         >
-                          Login
-                        </Link>
-                      </li>
+                          <Link
+                            to="#!"
+                            className="tagmenu"
+                            data-toggle="modal"
+                            data-target="#modal-99"
+                          >
+                            Login
+                          </Link>
+                        </li>
+                      ) : (
+                        <>
+                          <li>
+                            <img
+                              src={`${SERVER_URL}images/${user.picture}`}
+                              alt="profile-picture"
+                              width="38"
+                              id="profile-pict"
+                              style={{
+                                borderRadius: "50%",
+                                height: " 2.6em",
+                                width: "2.6em",
+                                objectFit: "cover",
+                              }}
+                            />
+                          </li>
+                          <li>
+                            <a href="#!" className="tagmenu">
+                              {user.name}
+                            </a>
+                            <ul class="submenu">
+                              <li>
+                                <a href="#!">
+                                  <i class="fa fa-user-circle mr-2"></i> Profile
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#!">
+                                  <i class="fa fa-edit mr-2"></i> Daftar Santri
+                                </a>
+                              </li>
+                              <li>
+                                <a href="#!" onClick={handleClick}>
+                                  <i class="fa fa-sign-out-alt mr-2"></i> Logout
+                                </a>
+                              </li>
+                            </ul>
+                          </li>
+                        </>
+                      )}
                     </ul>
                   </nav>
                 </div>

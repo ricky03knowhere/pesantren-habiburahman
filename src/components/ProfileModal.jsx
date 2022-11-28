@@ -1,5 +1,5 @@
 import React from "react";
-import { getBirthDate } from "../utils/utils";
+import { getBirthDate } from "../utils/utils.js";
 
 function ProfileModal({ data }) {
   data = data[0];

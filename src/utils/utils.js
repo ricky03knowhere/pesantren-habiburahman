@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 
+const SERVER_URL = "http://localhost:4001/";
+
 const appendScript = (scriptToAppend) => {
   const script = document.createElement("script");
   script.src = scriptToAppend;
@@ -40,4 +42,4 @@ const getBirthDate = (date) => {
   } ${getDate.getFullYear()}`;
 };
 
-export { appendScript, changeTitle, getBirthDate };
+export { SERVER_URL, appendScript, changeTitle, getBirthDate };

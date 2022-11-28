@@ -3,12 +3,19 @@ import { Route, Routes } from "react-router-dom";
 import Kurikulum from "../Kurikulum";
 
 const AppRoute = ({ component: Component, layout: Layout, ...rest }) => {
-  // console.log(Component);
-  // console.log(Layout);
-  // console.log(rest);
+  const getUser = localStorage.getItem("user");
+  const user = JSON.parse(getUser);
+  console.log("Auth User ==>> ", user);
   return (
     <Routes>
-      <Route {...rest} render={(props) => <Kurikulum />} />
+      <Route
+        {...rest}
+        element={
+          <Layout user={user}>
+            <Component />
+          </Layout>
+        }
+      />
     </Routes>
   );
 };

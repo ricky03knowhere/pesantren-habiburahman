@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Markup } from "interweave";
 import PageTitle from "../components/PageTitle";
-import { changeTitle } from "../utils/utils";
+import { changeTitle } from "../utils/utils.js";
 import { alurPendaftaran, persyaratan } from "../database/pendaftaran";
 import Biaya from "../components/Biaya";
 

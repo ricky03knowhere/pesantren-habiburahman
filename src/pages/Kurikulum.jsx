@@ -4,7 +4,7 @@ import Ekstrakulikuler from "../components/Ekstrakulikuler";
 import Kegiatan from "../components/Kegiatan";
 import Kitab from "../components/Kitab";
 import PageTitle from "../components/PageTitle";
-import { changeTitle } from "../utils/utils";
+import { changeTitle, SERVER_URL } from "../utils/utils.js";
 
 const Kurikulum = () => {
   const [kegiatan, setKegiatan] = useState([]);
@@ -20,9 +20,9 @@ const Kurikulum = () => {
 
   useEffect(() => {
     changeTitle("Kurikulum");
-    getData("http://localhost:4001/info/kegiatan", setKegiatan);
-    getData("http://localhost:4001/info/kitab", setKitab);
-    getData("http://localhost:4001/info/ekstra", setEkstra);
+    getData(SERVER_URL + "info/kegiatan", setKegiatan);
+    getData(SERVER_URL + "info/kitab", setKitab);
+    getData(SERVER_URL + "info/ekstra", setEkstra);
   }, []);
 
   return (

@@ -2,11 +2,13 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Element } from "react-scroll";
 import { about } from "../database/profile";
+import { SERVER_URL } from "../utils/utils.js";
 import ProfileModal from "./ProfileModal";
 
 function Profile() {
-  const [modal, setModal] = useState('');
+  const [modal, setModal] = useState("");
   const [pengajar, setPengajar] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   let details = about[1].map((detail) => (
     <tr>
@@ -50,11 +52,10 @@ function Profile() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4001/info/pengajar")
+      .get(SERVER_URL + "info/pengajar")
       .then(({ data }) => {
-        console.log("pengajar ==>> ", data.map(el => el.picture));
         setPengajar(data);
-        // profileGenerate(data);
+        setLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -109,7 +110,15 @@ function Profile() {
         >
           <h3 className="sub-title">Daftar Pengajar</h3>
 
-          <div className="owl-carousel owl-theme">{profileGenerate(pengajar)}</div>
+          {!loading ? (
+            <div className="owl-carousel owl-theme">
+              {profileGenerate(pengajar)}
+            </div>
+          ) : (
+            <div className="row  mt-4 col-12 justify-content-center">
+              <h4>Loading content...</h4>
+            </div>
+          )}
         </Element>
         {/* <!--PENGAJAR END--> */}
       </div>
