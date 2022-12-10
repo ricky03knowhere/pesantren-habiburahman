@@ -1,10 +1,26 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import Kurikulum from "../Kurikulum";
+import { SERVER_URL } from "../../utils/utils";
 
 const AppRoute = ({ component: Component, layout: Layout, ...rest }) => {
+  const [loggedUser, setLoggedUser] = useState({});
+
+  useEffect(() => {
+    axios
+      .get(SERVER_URL + "qr/loggedUser")
+      .then(({ data }) => {
+        setLoggedUser(data);
+      })
+      .catch((err) => {
+        console.log(err);
+        setLoggedUser(null);
+      });
+  }, []);
+
   const getUser = localStorage.getItem("user");
-  const user = JSON.parse(getUser);
+  const user = getUser ? JSON.parse(getUser) : loggedUser ? loggedUser : null;
+
   console.log("Auth User ==>> ", user);
   return (
     <Routes>

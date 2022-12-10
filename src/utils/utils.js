@@ -1,12 +1,10 @@
-import { useEffect } from "react";
-
 const SERVER_URL = "http://localhost:4001/";
 
 const appendScript = (scriptToAppend) => {
   const script = document.createElement("script");
   script.src = scriptToAppend;
   script.async = true;
-  document.body.appendChild(script);
+  document.body.after(script);
 };
 
 const changeTitle = (title) => {

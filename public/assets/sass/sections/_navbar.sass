@@ -21,7 +21,21 @@
       text-stroke: 0 t#0000 
       -webkit-text-stroke: 0 #0000
       text-shadow: 0px 0px 0px #0006
-
+    .badge
+      width: 100%
+      position: relative
+      top: -1.6em
+      border-radius: .8em
+      padding: 1em
+      &.admin
+        background: var.$secondary-color
+      &.santri
+        background: var.$complement-1
+      &.guest
+        background: var.$danger-color
+      &.pengajar
+        background: var.$purple-color
+      
       &::before
         background: var.$indigo-color
     #navigation 

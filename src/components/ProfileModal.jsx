@@ -1,5 +1,5 @@
 import React from "react";
-import { getBirthDate } from "../utils/utils.js";
+import { getBirthDate, SERVER_URL } from "../utils/utils.js";
 
 function ProfileModal({ data }) {
   data = data[0];
@@ -30,7 +30,10 @@ function ProfileModal({ data }) {
           <div class="modal-body">
             <div class="row">
               <div class="col-md-4 justify-items-center">
-                <img src={"/assets/img/" + data.picture} alt={data.name} />
+                <img
+                  src={`${SERVER_URL}images/${data.picture}`}
+                  alt={data.name}
+                />
               </div>
               <div class="col-md-8">
                 <div class="table-responsive">

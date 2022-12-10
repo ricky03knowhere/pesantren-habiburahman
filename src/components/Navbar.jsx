@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { SERVER_URL } from "../utils/utils";
@@ -11,6 +12,10 @@ function Navbar({ user }) {
   const handleLogout = () => {
     console.log("ok");
     localStorage.clear();
+    axios
+      .put(SERVER_URL + "qr/logoutUser")
+      .then((res) => console.log("ok"))
+      .catch((err) => console.log(err));
     window.location.href = "/";
   };
 
@@ -191,15 +196,43 @@ function Navbar({ user }) {
                               {user.name}
                             </a>
                             <ul class="submenu">
+                              {user.isAdmin ? (
+                                <span className="badge admin">Admin</span>
+                              ) : user.position === "guest" ? (
+                                <span className="badge guest">Guest</span>
+                              ) : user.position === "santri" ? (
+                                <span className="badge santri">Santri</span>
+                              ) : (
+                                <span className="badge pengajar">Pengajar</span>
+                              )}
+
+                              {user.isAdmin ? (
+                                <li>
+                                  <Link to="/admin">
+                                    <i class="fa fa-tachometer-alt mr-2"></i>
+                                    Dashboard
+                                  </Link>
+                                </li>
+                              ) : user.position === "santri" ? (
+                                <li>
+                                  <Link to="/santri/dashboard">
+                                    <i class="fa fa-tachometer-alt mr-2"></i>
+                                    Dashboard
+                                  </Link>
+                                </li>
+                              ) : (
+                                <li>
+                                  <Link to="/register">
+                                    <i class="fa fa-edit mr-2"></i> Daftar
+                                    Santri
+                                  </Link>
+                                </li>
+                              )}
+
                               <li>
-                                <a href="#!">
+                                <Link to="/user/profile">
                                   <i class="fa fa-user-circle mr-2"></i> Profile
-                                </a>
-                              </li>
-                              <li>
-                                <a href="#!">
-                                  <i class="fa fa-edit mr-2"></i> Daftar Santri
-                                </a>
+                                </Link>
                               </li>
                               <li>
                                 <a href="#!" onClick={handleClick}>

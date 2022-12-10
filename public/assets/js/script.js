@@ -83,22 +83,29 @@ $(document).ready(() => {
 
   $(".owl-carousel .owl-nav").removeClass("disabled");
   $(".owl-carousel .owl-dots").removeClass("disabled");
-  // Owl Carousel Tooltips
+
+  // Profile Pegngajar Tooltips
   $(".owl-carousel .item .profile-card").tooltip({
     title: "Click for detail",
     delay: 200,
     offset: 10,
     template: '<div class="tooltip" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>',
   });
-
+  
+  // Kitab Tooltips
   $("#kitab .col-md-3 .card").tooltip({
     title: "Click for detail",
     delay: 200,
     offset: 10,
     template: '<div class="tooltip" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>',
   });
+  
+  // Form Santri Tooltips
+  $("#santriRegister .row .education").tooltip({
+    title: "Instansi : tahun masuk ~ tahun lulus",
+    delay: 200,
+    offset: 10,
+    template: '<div class="tooltip" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>',
+  });
 
-  // <<--- Copyright Year --->>
-  let year = new Date().getFullYear();
-  $("#footer .year").html(year);
 });

@@ -63,7 +63,26 @@
   -webkit-text-stroke: 0 #0000;
   text-shadow: 0px 0px 0px #0006;
 }
-#navbar .main-menu .submenu a::before {
+#navbar .main-menu .badge {
+  width: 100%;
+  position: relative;
+  top: -1.6em;
+  border-radius: 0.8em;
+  padding: 1em;
+}
+#navbar .main-menu .badge.admin {
+  background: #A56DF2;
+}
+#navbar .main-menu .badge.santri {
+  background: #5CDBAD;
+}
+#navbar .main-menu .badge.guest {
+  background: #F2A385;
+}
+#navbar .main-menu .badge.pengajar {
+  background: #B258DB;
+}
+#navbar .main-menu .badge::before {
   background: #6B58DB;
 }
 #navbar .main-menu #navigation .submenu {
@@ -337,19 +356,19 @@
   transition: all 0.4s;
 }
 #profile .item .profile-card .img-card.id0::after {
-  background-image: url(../img/uag2.jpeg);
+  background-image: url(http://localhost:4001/images/uag2.jpeg);
 }
 #profile .item .profile-card .img-card.id1::after {
-  background-image: url(../img/abrem.jpg);
+  background-image: url(http://localhost:4001/images/abrem.jpg);
 }
 #profile .item .profile-card .img-card.id2::after {
-  background-image: url(../img/eep.jpg);
+  background-image: url(http://localhost:4001/images/eep.jpg);
 }
 #profile .item .profile-card .img-card.id3::after {
-  background-image: url(../img/vina.jpeg);
+  background-image: url(http://localhost:4001/images/vina.jpeg);
 }
 #profile .item .profile-card .img-card.id4::after {
-  background-image: url(../img/ustad.jpg);
+  background-image: url(http://localhost:4001/images/ustad.jpg);
 }
 #profile .item .profile-card .btn {
   color: #fff;

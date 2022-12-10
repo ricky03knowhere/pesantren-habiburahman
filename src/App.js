@@ -8,10 +8,12 @@ import AdminDashboard from "./pages/AdminDashboard";
 import Home from "./pages/Home";
 import Info from "./pages/Info";
 import Kurikulum from "./pages/Kurikulum";
-import AdminLayout from "./pages/layouts/AdminLayout";
+import DashboardLayout from "./pages/layouts/DashboardLayout";
 import AppRoute from "./pages/layouts/AppRoute";
 import MainLayout from "./pages/layouts/MainLayout";
 import Pendaftaran from "./pages/Pendaftaran";
+import SantriDashboard from "./pages/SantriDashboard";
+import SantriRegister from "./pages/SantriRegister";
 import { appendScript } from "./utils/utils";
 
 export class App extends Component {
@@ -42,27 +44,39 @@ export class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <AppRoute exact path="/" component={Home} layout={MainLayout} />
-        <AppRoute exact path="/home/*" component={Home} layout={MainLayout} />
+        <AppRoute exact path="/" component={Home} layout={MainLayout} />{" "}
+        <AppRoute exact path="/home/*" component={Home} layout={MainLayout} />{" "}
         <AppRoute
           exact
           path="/kurikulum/*"
           component={Kurikulum}
           layout={MainLayout}
-        />
-        <AppRoute exact path="/info/*" component={Info} layout={MainLayout} />
+        />{" "}
+        <AppRoute exact path="/info/*" component={Info} layout={MainLayout} />{" "}
         <AppRoute
           exact
           path="/pendaftaran/*"
           component={Pendaftaran}
           layout={MainLayout}
-        />
+        />{" "}
+        <AppRoute
+          exact
+          path="/register"
+          component={SantriRegister}
+          layout={MainLayout}
+        />{" "}
         <AppRoute
           exact
           path="/admin/*"
           component={AdminDashboard}
-          layout={AdminLayout}
-        />
+          layout={DashboardLayout}
+        />{" "}
+        <AppRoute
+          exact
+          path="/santri/*"
+          component={SantriDashboard}
+          layout={DashboardLayout}
+        />{" "}
       </BrowserRouter>
     );
   }

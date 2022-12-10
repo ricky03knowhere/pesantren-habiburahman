@@ -53,7 +53,7 @@ function Biaya() {
   return (
     <div class="row justify-content-center biaya-wrapper" id="biaya">
       <div class="col-md-11">
-        <h3 class="sub-title">Biaya Pendaftaran</h3>
+        <h3 class="sub-title">Biaya Bulanan / SPP</h3>
         <h4>
           <i class="fas fa-angle-double-right mr-2"></i>Santri Putra
         </h4>

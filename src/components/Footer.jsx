@@ -53,17 +53,17 @@ function Footer() {
         <div class="row justify-content-center">
           <div class="col-11">
             <p>
-              &copy; Copyright 2010 - <span class="year"></span>, Pesantren
+              &copy; Copyright 2014 - {new Date().getFullYear()}, Pesantren
               Habiburrahman
               <br />
               Dibuat oleh{" "}
               <a href="https://ricky03knowhere.github.io" target="_blank">
                 @ricky_knowhere
               </a>{" "}
-              {/* | Dengan Template dari{" "}
+              | Dengan Template dari{" "}
               <a href="https://colorlib.com/" target="_blank">
                 Colorlib
-              </a> */}
+              </a>
             </p>
           </div>
         </div>
