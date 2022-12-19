@@ -2,7 +2,7 @@ import React from "react";
 
 function Sidebar({ isAdmin }) {
   const santri = [
-    { icon: "dashboard", link: "dashboard", title: "Dashboard" },
+    { icon: "dashboard", link: "santri", title: "Dashboard" },
     {
       icon: "receipt_long",
       link: "pembayaran",
@@ -10,24 +10,24 @@ function Sidebar({ isAdmin }) {
     },
     {
       icon: "history",
-      link: "pembayaran/history",
+      link: "history",
       title: "History Pembayaran",
     },
     { icon: "language", link: "/", title: "Website Pesantren" },
   ];
 
   const admin = [
-    { icon: "dashboard", link: "dashboard", title: "Dashboard" },
-    { icon: "receipt_long", link: "data/pembayaran", title: "Pembayaran SPP" },
-    { icon: "school", link: "data/santri", title: "Daftar Santri" },
-    { icon: "supervisor_account", link: "data/staf", title: "Daftar Staff" },
+    { icon: "dashboard", link: "/santri", title: "Dashboard" },
+    { icon: "receipt_long", link: "/data/pembayaran", title: "Pembayaran SPP" },
+    { icon: "school", link: "/data/santri", title: "Daftar Santri" },
+    { icon: "supervisor_account", link: "/data/staf", title: "Daftar Staff" },
     { icon: "language", link: "/", title: "Website Pesantren" },
-    { icon: "", link: "", title: "Website Pages" },
-    { icon: "payments", link: "website/biaya", title: "Biaya SPP" },
-    { icon: "book", link: "website/kitab", title: "Daftar Kitab" },
+    { icon: "", link: "/", title: "Website Pages" },
+    { icon: "payments", link: "/website/biaya", title: "Biaya SPP" },
+    { icon: "book", link: "/website/kitab", title: "Daftar Kitab" },
     {
       icon: "sports_basketball",
-      link: "website/ekstrakulikuler",
+      link: "/website/ekstrakulikuler",
       title: "Daftar Ekstrakulikuler",
     },
   ];
@@ -47,16 +47,16 @@ function Sidebar({ isAdmin }) {
         ></i>
         <a
           class="navbar-brand m-0"
-          href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard "
+          href="/"
           target="_blank"
         >
           <img
-            src="./assets/img/logo-ct.png"
+            src="/assets/img/logo2.png"
             class="navbar-brand-img h-100"
             alt="main_logo"
           />
           <span class="ms-1 font-weight-bold text-white">
-            Material Dashboard 2
+            {isAdmin ? "Admin" : "Santri"} Dashboard
           </span>
         </a>
       </div>

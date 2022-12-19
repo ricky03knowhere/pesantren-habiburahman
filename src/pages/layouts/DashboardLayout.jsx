@@ -12,7 +12,7 @@ const DashboardLayout = ({ children, user }) => {
         {/* <!-- Navbar --> */}
         <Navbar user={user} />
         {/* <!-- End Navbar --> */}
-        <div class="container-fluid py-4">
+        <div class="container-fluid pb-4">
           {children}
           <Footer />
         </div>

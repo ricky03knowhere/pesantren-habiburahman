@@ -215,7 +215,7 @@ function Navbar({ user }) {
                                 </li>
                               ) : user.position === "santri" ? (
                                 <li>
-                                  <Link to="/santri/dashboard">
+                                  <Link to="/santri">
                                     <i class="fa fa-tachometer-alt mr-2"></i>
                                     Dashboard
                                   </Link>

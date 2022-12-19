@@ -20,7 +20,11 @@ function Navbar({ user }) {
               class="breadcrumb-item text-sm text-dark active"
               aria-current="page"
             >
-              Dashboard
+              {user.isAdmin
+                ? "Administrator"
+                : user.position === "santri"
+                ? "Santri"
+                : ""}
             </li>
           </ol>
           <h6 class="font-weight-bolder mb-0">Dashboard</h6>

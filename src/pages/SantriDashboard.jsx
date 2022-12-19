@@ -3,62 +3,85 @@ import React, { useEffect, useState } from "react";
 import { SERVER_URL } from "../utils/utils";
 
 const SantriDashboard = () => {
-  const [notif, setNotif] = useState("");
+  let [notif, setNotif] = useState({});
 
   const checkPembayaran = async () => {
     const { _id } = JSON.parse(localStorage.getItem("user"));
 
-    const data = await axios
+    await axios
       .get(`${SERVER_URL}transaction/pembayaran/${_id}`)
-      .then(({ data }) => data)
+      .then(({ data }) => {
+        let filtered = data.filter(
+          (item) => item.type === "pendaftaran" && item.status === "unpaid"
+        );
+        console.log("filtered ==>> ", filtered[0]);
+        notif = filtered[0];
+        setNotif(notif);
+      })
       .catch((err) => console.log(err));
-
-    console.log("data", data);
-
-    let isNotif = !data
-      ? ""
-      : data.filter((item) => item.type === "pendaftaran");
-    setNotif(isNotif);
   };
-
   useEffect(() => {
     checkPembayaran();
   }, []);
-
+  console.log("NOTIF ==>> ", notif);
+  const getDate = new Date(notif?.dueDate);
+  const price = notif?.price?.toLocaleString("id-ID", {
+    style: "currency",
+    currency: "IDR",
+    minimumFractionDigits: 0,
+  });
+  const date =
+    getDate.toLocaleTimeString("en-UK") +
+    " " +
+    getDate.toLocaleDateString("id-ID", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  console.table({ getDate, price, date });
   return (
-    <div class="row">
-      {/* {notif !== "" ? ( */}
-      <div class="alert alert-info alert-dismissible text-white" role="alert">
-        <span class="alert-icon">
-          <i class="fa fa-info-circle fa-2x me-2"></i> Success!
-        </span>
-        <span class="alert-text text-sm">
-          Anda telah terdaftar sebagau santri, silahkan lakukan pembayaran biaya
-          pendaftaran dengan nominal
-          <b>
-            {(80000).toLocaleString("id-ID", {
-              style: "currency",
-              currency: "IDR",
-              minimumFractionDigits: 0,
-            })}
-          </b>
-          ke rekening <b>38-2918-1018</b> atas nama <b>Nico Robbin</b>
-          {/* <a href="javascript:;" class="alert-link text-white">
-                    an example link
-                  </a> */}
-        </span>
-        <button
-          type="button"
-          class="btn-close text-lg py-3 opacity-10"
-          data-bs-dismiss="alert"
-          aria-label="Close"
+    <div class="row mt-5">
+      {notif ? (
+        <div
+          class="alert alert-info alert-dismissible text-white"
+          style={{ marginBottom: "5em" }}
+          role="alert"
         >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      {/* ) : null} */}
+          <span class="alert-icon">
+            <h5 className="font-weight-bold text-white"><i class="fa fa-info-circle me-2 text-white" style={{transform: 'scale(1.3)'}}></i> Success!</h5>
+          </span>
+          <span class="alert-text text-sm d-block pt-2" style={{lineHeight: '1.5rem'}}>
+            Anda telah terdaftar sebagau santri, silahkan lakukan pembayaran
+            biaya pendaftaran dengan nominal <b style={{color: '#2f343a'}}>{price}</b> ke rekening{" "}
+            <b style={{color: '#2f343a'}}>38-2918-1018</b> atas nama <b style={{color: '#2f343a'}}>Nico Robbin</b>, Batas waktu
+            pembayaran sampai pukul <b style={{color: '#2f343a'}}>{date}</b>{" "}
+            <a
+              href="spp"
+              class="font-weight-bold mt-3"
+              style={{
+                padding: ".5em .8em",
+                background: "linear-gradient(195deg,#ffa726,#fb8c00)",
+                borderRadius: "0.5rem",
+                display: 'block',
+                width: '10em'
+              }}
+            >
+              Bayar Sekarang
+            </a>
+          </span>
+          <button
+            type="button"
+            class="btn-close text-lg py-3 opacity-10"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      ) : null}
 
-      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4 mt">
         <div class="card">
           <div class="card-header p-3 pt-2">
             <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">

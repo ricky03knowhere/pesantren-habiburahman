@@ -15,6 +15,8 @@ import Pendaftaran from "./pages/Pendaftaran";
 import SantriDashboard from "./pages/SantriDashboard";
 import SantriRegister from "./pages/SantriRegister";
 import { appendScript } from "./utils/utils";
+import Pembayaran from "./pages/Pembayaran";
+import FormPembayaran from "./pages/FormPembayaran";
 
 export class App extends Component {
   componentDidMount() {
@@ -72,9 +74,19 @@ export class App extends Component {
           layout={DashboardLayout}
         />{" "}
         <AppRoute
-          exact
-          path="/santri/*"
+        
+          path="santri"
           component={SantriDashboard}
+          layout={DashboardLayout}
+        />{" "}
+        <AppRoute
+          path="pembayaran"
+          component={Pembayaran}
+          layout={DashboardLayout}
+        />{" "}
+        <AppRoute
+          path="spp"
+          component={FormPembayaran}
           layout={DashboardLayout}
         />{" "}
       </BrowserRouter>
