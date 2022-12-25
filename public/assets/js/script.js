@@ -108,4 +108,20 @@ $(document).ready(() => {
     template: '<div class="tooltip" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>',
   });
 
+  // Detail Pembayaran Tooltips
+  $("#pembayaran .row #infoPem").tooltip({
+    title: "Click for detail",
+    // delay: 200,
+    // offset: 10,
+    template: '<div class="tooltip" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>',
+  });
+
+  // Verification Pembayaran Tooltips
+  $("#pembayaran .row #verificatePem").tooltip({
+    title: "Click for verification",
+    // delay: 200,
+    // offset: 10,
+    template: '<div class="tooltip" role="tooltip"><div class="arrow"></div><div class="tooltip-inner"></div></div>',
+  });
+
 });

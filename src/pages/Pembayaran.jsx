@@ -1,13 +1,30 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { checkPembayaran, loadPembayaranModal } from "../interfaces";
 
 const Pembayaran = () => {
+  const [pembayaran, setPembayaran] = useState([]);
+  const [modal, setModal] = useState(false);
+
+  useEffect(() => {
+    (async () => setPembayaran(await checkPembayaran()))();
+  }, []);
+
   return (
     <div class="row">
       <div class="col-12">
         <div class="card my-4">
           <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-            <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-              <h6 class="text-white text-capitalize ps-3">Authors table</h6>
+            <div class="bg-gradient-info shadow-info border-radius-lg pt-4 pb-3">
+              <h5 class="text-white text-capitalize ps-3">
+                <i
+                  class="material-icons opacity-10 me-2"
+                  style={{ transform: "scale(1.3)" }}
+                >
+                  history
+                </i>
+                History Pembayaran
+              </h5>
             </div>
           </div>
           <div class="card-body px-0 pb-2">
@@ -15,286 +32,108 @@ const Pembayaran = () => {
               <table class="table align-items-center mb-0">
                 <thead>
                   <tr>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                      Author
+                    <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2 pe-0">
+                      No.
                     </th>
-                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                      Function
+                    <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2 pe-0">
+                      Pembayaran
                     </th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                    <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2 pe-0">
+                      Tenggat Waktu
+                    </th>
+                    <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2 pe-0">
+                      Tanggal Bayar
+                    </th>
+                    <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2 pe-0">
                       Status
                     </th>
-                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                      Employed
+                    <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2 pe-0">
+                      Detail
                     </th>
-                    <th class="text-secondary opacity-7"></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div>
-                          <img
-                            src="../assets/img/team-2.jpg"
-                            class="avatar avatar-sm me-3 border-radius-lg"
-                            alt="user1"
-                          />
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">John Michael</h6>
-                          <p class="text-xs text-secondary mb-0">
-                            john@creative-tim.com
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">Manager</p>
-                      <p class="text-xs text-secondary mb-0">Organization</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">
-                        Online
-                      </span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">
-                        23/04/18
-                      </span>
-                    </td>
-                    <td class="align-middle">
-                      <a
-                        href="javascript:;"
-                        class="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Edit
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div>
-                          <img
-                            src="../assets/img/team-3.jpg"
-                            class="avatar avatar-sm me-3 border-radius-lg"
-                            alt="user2"
-                          />
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                          <p class="text-xs text-secondary mb-0">
-                            alexa@creative-tim.com
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">Programator</p>
-                      <p class="text-xs text-secondary mb-0">Developer</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-secondary">
-                        Offline
-                      </span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">
-                        11/01/19
-                      </span>
-                    </td>
-                    <td class="align-middle">
-                      <a
-                        href="javascript:;"
-                        class="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Edit
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div>
-                          <img
-                            src="../assets/img/team-4.jpg"
-                            class="avatar avatar-sm me-3 border-radius-lg"
-                            alt="user3"
-                          />
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">Laurent Perrier</h6>
-                          <p class="text-xs text-secondary mb-0">
-                            laurent@creative-tim.com
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">Executive</p>
-                      <p class="text-xs text-secondary mb-0">Projects</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">
-                        Online
-                      </span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">
-                        19/09/17
-                      </span>
-                    </td>
-                    <td class="align-middle">
-                      <a
-                        href="javascript:;"
-                        class="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Edit
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div>
-                          <img
-                            src="../assets/img/team-3.jpg"
-                            class="avatar avatar-sm me-3 border-radius-lg"
-                            alt="user4"
-                          />
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">Michael Levi</h6>
-                          <p class="text-xs text-secondary mb-0">
-                            michael@creative-tim.com
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">Programator</p>
-                      <p class="text-xs text-secondary mb-0">Developer</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-success">
-                        Online
-                      </span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">
-                        24/12/08
-                      </span>
-                    </td>
-                    <td class="align-middle">
-                      <a
-                        href="javascript:;"
-                        class="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Edit
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div>
-                          <img
-                            src="../assets/img/team-2.jpg"
-                            class="avatar avatar-sm me-3 border-radius-lg"
-                            alt="user5"
-                          />
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">Richard Gran</h6>
-                          <p class="text-xs text-secondary mb-0">
-                            richard@creative-tim.com
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">Manager</p>
-                      <p class="text-xs text-secondary mb-0">Executive</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-secondary">
-                        Offline
-                      </span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">
-                        04/10/21
-                      </span>
-                    </td>
-                    <td class="align-middle">
-                      <a
-                        href="javascript:;"
-                        class="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Edit
-                      </a>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="d-flex px-2 py-1">
-                        <div>
-                          <img
-                            src="../assets/img/team-4.jpg"
-                            class="avatar avatar-sm me-3 border-radius-lg"
-                            alt="user6"
-                          />
-                        </div>
-                        <div class="d-flex flex-column justify-content-center">
-                          <h6 class="mb-0 text-sm">Miriam Eric</h6>
-                          <p class="text-xs text-secondary mb-0">
-                            miriam@creative-tim.com
-                          </p>
-                        </div>
-                      </div>
-                    </td>
-                    <td>
-                      <p class="text-xs font-weight-bold mb-0">Programator</p>
-                      <p class="text-xs text-secondary mb-0">Developer</p>
-                    </td>
-                    <td class="align-middle text-center text-sm">
-                      <span class="badge badge-sm bg-gradient-secondary">
-                        Offline
-                      </span>
-                    </td>
-                    <td class="align-middle text-center">
-                      <span class="text-secondary text-xs font-weight-bold">
-                        14/09/20
-                      </span>
-                    </td>
-                    <td class="align-middle">
-                      <a
-                        href="javascript:;"
-                        class="text-secondary font-weight-bold text-xs"
-                        data-toggle="tooltip"
-                        data-original-title="Edit user"
-                      >
-                        Edit
-                      </a>
-                    </td>
-                  </tr>
+                  {pembayaran.map((pem, i) => (
+                    <tr>
+                      <td>
+                        <p class="text-sm text-secondary mb-0">{i + 1}</p>
+                      </td>
+                      <td>
+                        <p class="text-sm text-secondary mb-0">
+                          {pem.type === "pendaftaran"
+                            ? "Biaya Pendaftaran"
+                            : "SPP Bulan " +
+                              new Date(pem.dueDate).toLocaleString("id-ID", {
+                                month: "long",
+                                year: "numeric",
+                              })}
+                        </p>
+                      </td>
+                      <td>
+                        <span class="text-secondary text-sm font-weight-bold">
+                          {new Date(pem.dueDate).toLocaleString("id-ID", {
+                            day: "2-digit",
+                            month: "long",
+                            year: "numeric",
+                          })}
+                        </span>
+                      </td>
+                      <td>
+                        <span class="text-secondary text-sm font-weight-bold">
+                          {pem.payDate
+                            ? new Date(pem.payDate).toLocaleString("id-ID", {
+                                day: "2-digit",
+                                month: "long",
+                                year: "numeric",
+                              })
+                            : "-"}
+                        </span>
+                      </td>
+                      <td>
+                        {pem.status === "false" ? (
+                          <span class="badge badge-sm bg-gradient-danger">
+                            unpaid
+                          </span>
+                        ) : pem.status === "pending" ? (
+                          <span class="badge badge-sm bg-gradient-warning">
+                            {pem.status}
+                          </span>
+                        ) : (
+                          <span class="badge badge-sm bg-gradient-success">
+                            {pem.status}
+                          </span>
+                        )}
+                      </td>
+                      <td>
+                        {pem.status === "paid" ? (
+                          <div className="col-1" id="infoPem">
+                            <i
+                              class="material-icons opacity-10 me-2"
+                              data-toggle="modal"
+                              data-target="#modal-1"
+                              onClick={(e) =>
+                                loadPembayaranModal(e, setModal, pembayaran)
+                              }
+                              data-id={i}
+                            >
+                              info
+                            </i>
+                          </div>
+                        ) : (
+                          "-"
+                        )}
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
           </div>
         </div>
       </div>
+      {/* <!-- MODAL START --> */}
+      {modal ? modal : ""}
+      {/* <!-- MODAL END --> */}
     </div>
   );
 };

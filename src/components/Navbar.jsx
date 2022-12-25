@@ -2,27 +2,13 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { SERVER_URL } from "../utils/utils";
+import { handleClickLogout } from "../interfaces";
 // import { Link as Link, animateScroll as scroll } from "react-scroll";
 
 function Navbar({ user }) {
   const { pathname, hash } = useLocation();
   const splitLocation = pathname.split("/");
   const url = splitLocation[1] + hash;
-
-  const handleLogout = () => {
-    console.log("ok");
-    localStorage.clear();
-    axios
-      .put(SERVER_URL + "qr/logoutUser")
-      .then((res) => console.log("ok"))
-      .catch((err) => console.log(err));
-    window.location.href = "/";
-  };
-
-  const handleClick = () => {
-    if (window.confirm("Are you sure to logout,.?")) return handleLogout();
-    else return null;
-  };
 
   return (
     <header>
@@ -208,14 +194,14 @@ function Navbar({ user }) {
 
                               {user.isAdmin ? (
                                 <li>
-                                  <Link to="/admin">
+                                  <Link to="/admin_dashboard">
                                     <i class="fa fa-tachometer-alt mr-2"></i>
                                     Dashboard
                                   </Link>
                                 </li>
                               ) : user.position === "santri" ? (
                                 <li>
-                                  <Link to="/santri">
+                                  <Link to="/santri_dashboard">
                                     <i class="fa fa-tachometer-alt mr-2"></i>
                                     Dashboard
                                   </Link>
@@ -235,7 +221,7 @@ function Navbar({ user }) {
                                 </Link>
                               </li>
                               <li>
-                                <a href="#!" onClick={handleClick}>
+                                <a href="#!" onClick={handleClickLogout}>
                                   <i class="fa fa-sign-out-alt mr-2"></i> Logout
                                 </a>
                               </li>

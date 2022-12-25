@@ -1,7 +1,12 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import { SERVER_URL } from "../../utils/utils";
 
 function Navbar({ user }) {
+  const { pathname } = useLocation();
+  const splitLocation = pathname.split("/");
+  const url = splitLocation[1].split("_");
+
   return (
     <nav
       class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
@@ -16,18 +21,31 @@ function Navbar({ user }) {
                 Home
               </a>
             </li>
-            <li
-              class="breadcrumb-item text-sm text-dark active"
-              aria-current="page"
-            >
+            <li class="breadcrumb-item text-sm text-dark" aria-current="page">
               {user.isAdmin
                 ? "Administrator"
                 : user.position === "santri"
                 ? "Santri"
                 : ""}
             </li>
+            <li
+              class="breadcrumb-item text-sm text-dark active"
+              aria-current="page"
+            >
+              {url[0] === "daftar"
+                ? "Tables"
+                : url[0] === "web"
+                ? "Website Pages"
+                : ""}
+            </li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+          <h6 class="font-weight-bolder mb-0 text-capitalize">
+            {user.position === "santri"
+              ? `${url[0]} ${url[1]}`
+              : url[1] === "dashboard"
+              ? url[1]
+              : "Daftar " + url[1]}
+          </h6>
         </nav>
         <div
           class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4"
@@ -55,6 +73,7 @@ function Navbar({ user }) {
                     height: " 2.6em",
                     width: "2.6em",
                     objectFit: "cover",
+                    marginRight: ".5em",
                   }}
                 />
                 <span class="d-sm-inline d-none">{user.name}</span>
@@ -73,11 +92,11 @@ function Navbar({ user }) {
                 </div>
               </a>
             </li>
-            <li class="nav-item px-3 d-flex align-items-center">
+            {/* <li class="nav-item px-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-body p-0">
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
               </a>
-            </li>
+            </li> */}
             {/* <li class="nav-item dropdown pe-2 d-flex align-items-center">
               <a
                 href="javascript:;"

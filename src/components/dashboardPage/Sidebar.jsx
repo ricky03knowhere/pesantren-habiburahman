@@ -1,33 +1,42 @@
 import React from "react";
+import { handleClickLogout } from "../../interfaces";
 
 function Sidebar({ isAdmin }) {
   const santri = [
-    { icon: "dashboard", link: "santri", title: "Dashboard" },
+    { icon: "dashboard", link: "santri_dashboard", title: "Dashboard" },
     {
       icon: "receipt_long",
-      link: "pembayaran",
-      title: "Pembayaran SPP",
+      link: "form_pembayaran",
+      title: "Pembayaran",
     },
     {
       icon: "history",
-      link: "history",
+      link: "history_pembayaran",
       title: "History Pembayaran",
     },
     { icon: "language", link: "/", title: "Website Pesantren" },
   ];
 
   const admin = [
-    { icon: "dashboard", link: "/santri", title: "Dashboard" },
-    { icon: "receipt_long", link: "/data/pembayaran", title: "Pembayaran SPP" },
-    { icon: "school", link: "/data/santri", title: "Daftar Santri" },
-    { icon: "supervisor_account", link: "/data/staf", title: "Daftar Staff" },
+    { icon: "dashboard", link: "/admin_dashboard", title: "Dashboard" },
+    {
+      icon: "receipt_long",
+      link: "/daftar_pembayaran",
+      title: "Pembayaran SPP",
+    },
+    { icon: "school", link: "/daftar_santri", title: "Daftar Santri" },
+    {
+      icon: "supervisor_account",
+      link: "/daftar_pengajar",
+      title: "Daftar Pengajar",
+    },
     { icon: "language", link: "/", title: "Website Pesantren" },
     { icon: "", link: "/", title: "Website Pages" },
-    { icon: "payments", link: "/website/biaya", title: "Biaya SPP" },
-    { icon: "book", link: "/website/kitab", title: "Daftar Kitab" },
+    { icon: "payments", link: "/web_biaya", title: "Biaya SPP" },
+    { icon: "book", link: "/web_kitab", title: "Daftar Kitab" },
     {
       icon: "sports_basketball",
-      link: "/website/ekstrakulikuler",
+      link: "/web_ekstrakulikuler",
       title: "Daftar Ekstrakulikuler",
     },
   ];
@@ -45,11 +54,7 @@ function Sidebar({ isAdmin }) {
           aria-hidden="true"
           id="iconSidenav"
         ></i>
-        <a
-          class="navbar-brand m-0"
-          href="/"
-          target="_blank"
-        >
+        <a class="navbar-brand m-0" href="/" target="_blank">
           <img
             src="/assets/img/logo2.png"
             class="navbar-brand-img h-100"
@@ -90,7 +95,7 @@ function Sidebar({ isAdmin }) {
             </h6>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white " href="./pages/profile.html">
+            <a class="nav-link text-white " href="user_profile">
               <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="material-icons opacity-10">person</i>
               </div>
@@ -98,7 +103,11 @@ function Sidebar({ isAdmin }) {
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white " href="./pages/sign-in.html">
+            <a
+              class="nav-link text-white "
+              href="#!"
+              onClick={handleClickLogout}
+            >
               <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                 <i class="material-icons opacity-10">logout</i>
               </div>

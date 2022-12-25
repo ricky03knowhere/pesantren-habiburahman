@@ -17,6 +17,13 @@ import SantriRegister from "./pages/SantriRegister";
 import { appendScript } from "./utils/utils";
 import Pembayaran from "./pages/Pembayaran";
 import FormPembayaran from "./pages/FormPembayaran";
+import Santri from "./pages/adminPages/Santri";
+import Pengajar from "./pages/adminPages/Pengajar";
+import DaftarPembayaran from "./pages/adminPages/Pembayaran";
+import Kitab from "./pages/adminPages/Kitab";
+import Ekstrakulikuler from "./pages/adminPages/Ekstrakulikuler";
+import Biaya from "./pages/adminPages/Biaya";
+import Profile from "./pages/Profile";
 
 export class App extends Component {
   componentDidMount() {
@@ -46,49 +53,79 @@ export class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <AppRoute exact path="/" component={Home} layout={MainLayout} />{" "}
-        <AppRoute exact path="/home/*" component={Home} layout={MainLayout} />{" "}
+        {/* Main Page Routes */}
+        <AppRoute exact path="/" component={Home} layout={MainLayout} />
+        <AppRoute exact path="/home/*" component={Home} layout={MainLayout} />
         <AppRoute
           exact
           path="/kurikulum/*"
           component={Kurikulum}
           layout={MainLayout}
-        />{" "}
-        <AppRoute exact path="/info/*" component={Info} layout={MainLayout} />{" "}
+        />
+        <AppRoute exact path="/info/*" component={Info} layout={MainLayout} />
         <AppRoute
           exact
           path="/pendaftaran/*"
           component={Pendaftaran}
           layout={MainLayout}
-        />{" "}
+        />
         <AppRoute
           exact
           path="/register"
           component={SantriRegister}
           layout={MainLayout}
-        />{" "}
+        />
+        {/* Santri Page Routes */}
         <AppRoute
-          exact
-          path="/admin/*"
-          component={AdminDashboard}
-          layout={DashboardLayout}
-        />{" "}
-        <AppRoute
-        
-          path="santri"
+          path="santri_dashboard"
           component={SantriDashboard}
           layout={DashboardLayout}
-        />{" "}
+        />
         <AppRoute
-          path="pembayaran"
+          path="history_pembayaran"
           component={Pembayaran}
           layout={DashboardLayout}
-        />{" "}
+        />
         <AppRoute
-          path="spp"
+          path="form_pembayaran"
           component={FormPembayaran}
           layout={DashboardLayout}
-        />{" "}
+        />
+        <AppRoute
+          path="user_profile"
+          component={Profile}
+          layout={DashboardLayout}
+        />
+
+        {/* Admin Page Routes */}
+        <AppRoute
+          exact
+          path="/admin_dashboard/*"
+          component={AdminDashboard}
+          layout={DashboardLayout}
+        />
+        <AppRoute
+          path="daftar_santri"
+          component={Santri}
+          layout={DashboardLayout}
+        />
+        <AppRoute
+          path="daftar_pengajar"
+          component={Pengajar}
+          layout={DashboardLayout}
+        />
+        <AppRoute
+          path="daftar_pembayaran"
+          component={DaftarPembayaran}
+          layout={DashboardLayout}
+        />
+        <AppRoute path="web_kitab" component={Kitab} layout={DashboardLayout} />
+        <AppRoute
+          path="web_ekstrakulikuler"
+          component={Ekstrakulikuler}
+          layout={DashboardLayout}
+        />
+        <AppRoute path="web_biaya" component={Biaya} layout={DashboardLayout} />
       </BrowserRouter>
     );
   }

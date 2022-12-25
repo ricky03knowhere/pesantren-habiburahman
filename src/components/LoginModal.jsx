@@ -37,7 +37,7 @@ function LoginModal() {
         localStorage.setItem("user", JSON.stringify(user));
 
         if (user.isAdmin || user.position === "santri")
-          return (window.location.href = "/admin");
+          return (window.location.href = user.position + "_dashboard");
         else return (window.location.href = "/");
       })
       .catch(({ response }) => {
