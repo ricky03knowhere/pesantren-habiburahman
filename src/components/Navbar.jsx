@@ -9,7 +9,7 @@ function Navbar({ user }) {
   const { pathname, hash } = useLocation();
   const splitLocation = pathname.split("/");
   const url = splitLocation[1] + hash;
-
+console.log("user ==>> ", user);
   return (
     <header>
       {/* Header Start */}
@@ -216,7 +216,7 @@ function Navbar({ user }) {
                               )}
 
                               <li>
-                                <Link to="/user/profile">
+                                <Link to="/user_profile">
                                   <i class="fa fa-user-circle mr-2"></i> Profile
                                 </Link>
                               </li>

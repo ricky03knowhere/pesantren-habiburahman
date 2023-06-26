@@ -2,23 +2,23 @@ let taglines = [
   [
     "hero1.jpg",
     "Mewujudkan penerus bangsa yang taat pada agama",
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam rerum laborum laudantium corrupti perferendis? Dolorum!",
+    "Memberikan pendidikan agama yang kuat kepada para santri agar mereka dapat memahami, mengamalkan, dan menerapkan ajaran agama dalam kehidupan sehari-hari.",
   ],
   [
     "hero2.jpg",
     "Mendidik karakker dan budi pekerti",
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam rerum laborum laudantium corrupti perferendis? Dolorum!",
+    "Mendorong santri untuk mengembangkan nilai-nilai moral, seperti jujur, disiplin, tanggung jawab, kerja keras, toleransi, keadilan, dan empati melalui pengalaman dan pembinaan yang berkesinambungan.",
   ],
   [
     "hero3.jpg",
     "Melahirkan para pemimpin umat & masyarakat",
-    "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam rerum laborum laudantium corrupti perferendis? Dolorum!",
+    "Membentuk santri menjadi individu yang berkualitas dan siap berkontribusi dalam masyarakat Dengan membekali santri dengan pemahaman agama yang kuat dan keterampilan yang relevan, berharap para santri dapat menjadi pemimpin yang bertanggung jawab & berintegritas.",
   ],
 ];
 
 let about = [
   [
-    "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni iste iusto similique dolore ducimus temporibus inventore. Iste assumenda tempore molestias sit repellendus ipsa aut pariatur perspiciatis, labore blanditiis officia laborum, tenetur maiores aspernatur explicabo animi voluptatibus debitis quaerat laudantium veniam accusamus quae. Beatae, eligendi blanditiis neque tempora exercitationem architecto excepturi?",
+    "Pesantren Habiburrahman yang terletak di Banyuresmi, Garut, adalah sebuah lembaga pendidikan agama yang memiliki reputasi yang sangat baik di Garut. Pesantren ini didirikan dengan tujuan utama untuk memberikan pendidikan agama yang kuat kepada para santri agar mereka menjadi penerus bangsa yang taat pada agama. Dengan fasilitas yang lengkap dan lingkungan yang nyaman, pesantren ini menawarkan program pendidikan yang komprehensif yang mencakup pengajaran Al-Qur'an, hadits, fiqh, dan pemahaman Islam yang mendalam.",
   ],
   [
     ["fa-calendar-check", "Akreditasi", "B"],

@@ -10,7 +10,7 @@ function Footer() {
               &copy; Copyright 2014 - {new Date().getFullYear()}, Pesantren
               Habiburrahman
               <br />
-              Dibuat oleh{" "}
+              {/* Dibuat oleh{" "}
               <a href="https://ricky03knowhere.github.io" className="text-primary" target="_blank">
                 @ricky_knowhere
               </a>{" "}
@@ -20,7 +20,7 @@ function Footer() {
                 className="text-primary" target="_blank"
               >
                 Creative Tim
-              </a>
+              </a> */}
             </div>
           </div>
           {/* <div class="col-lg-6">

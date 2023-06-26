@@ -8,7 +8,7 @@ function PembayaranModal({ pembayaran }) {
     <div
       class="modal fade"
       id="modal-1"
-      tabindex={-1}
+      tabIndex={-1}
       role="dialog"
       aria-labelledby="exampleModalCenterTitle"
     >
@@ -40,8 +40,9 @@ function PembayaranModal({ pembayaran }) {
                 <div class="img-wrapper">
                 
                     <img
-                      src={`${SERVER_URL}images/${pembayaran.picture}`}
+                      src={`${SERVER_URL}images/pembayaran/${pembayaran.picture}`}
                       alt={pembayaran.picture}
+                      width={'75%'}
                     />
                 </div>
               </div>

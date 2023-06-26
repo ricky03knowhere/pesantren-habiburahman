@@ -63,7 +63,7 @@ const SantriDashboard = () => {
             <b style={{ color: "#2f343a" }}>Nico Robbin</b>, Batas waktu
             pembayaran sampai pukul <b style={{ color: "#2f343a" }}>{date}</b>{" "}
             <a
-              href="spp"
+              href="form_pembayaran"
               class="font-weight-bold mt-3"
               style={{
                 padding: ".5em .8em",

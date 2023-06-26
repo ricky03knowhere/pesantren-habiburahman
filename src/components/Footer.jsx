@@ -56,14 +56,14 @@ function Footer() {
               &copy; Copyright 2014 - {new Date().getFullYear()}, Pesantren
               Habiburrahman
               <br />
-              Dibuat oleh{" "}
+              {/* Dibuat oleh{" "}
               <a href="https://ricky03knowhere.github.io" target="_blank">
                 @ricky_knowhere
               </a>{" "}
               | Dengan Template dari{" "}
               <a href="https://colorlib.com/" target="_blank">
                 Colorlib
-              </a>
+              </a> */}
             </p>
           </div>
         </div>

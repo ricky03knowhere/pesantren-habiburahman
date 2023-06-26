@@ -90,9 +90,9 @@ const Pembayaran = () => {
                         </span>
                       </td>
                       <td>
-                        {pem.status === "false" ? (
+                        {pem.status === "unpaid" ? (
                           <span class="badge badge-sm bg-gradient-danger">
-                            unpaid
+                            {pem.status}
                           </span>
                         ) : pem.status === "pending" ? (
                           <span class="badge badge-sm bg-gradient-warning">
@@ -105,7 +105,9 @@ const Pembayaran = () => {
                         )}
                       </td>
                       <td>
-                        {pem.status === "paid" ? (
+                        {pem.status === "unpaid" ? (
+                          "-"
+                        ) : (
                           <div className="col-1" id="infoPem">
                             <i
                               class="material-icons opacity-10 me-2"
@@ -119,8 +121,6 @@ const Pembayaran = () => {
                               info
                             </i>
                           </div>
-                        ) : (
-                          "-"
                         )}
                       </td>
                     </tr>

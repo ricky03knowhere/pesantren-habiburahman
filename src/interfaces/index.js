@@ -23,11 +23,13 @@ function loadPembayaranModal(e, setModal, pembayaran) {
 
 const handleLogout = () => {
   console.log("ok");
+
+  // const { qrCode } = JSON.parse(localStorage.getItem("user"));
+  // axios
+  //   .put(SERVER_URL + "qr/logoutUser/" + qrCode?.connectedDeviceId)
+  //   .then((res) => console.log("ok"))
+  //   .catch((err) => console.log(err));
   localStorage.clear();
-  axios
-    .put(SERVER_URL + "qr/logoutUser")
-    .then((res) => console.log("ok"))
-    .catch((err) => console.log(err));
   window.location.href = "/";
 };
 

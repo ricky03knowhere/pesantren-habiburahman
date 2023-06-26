@@ -5,6 +5,11 @@ import { SERVER_URL } from "../utils/utils.js";
 
 function LoginModal() {
   const [qrCode, setqrCode] = useState("");
+  const [registerData, setRegisterData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
   const [authData, setAuthData] = useState({ email: "", password: "" });
   const [authError, setAuthError] = useState({ status: false, errors: "" });
 
@@ -37,8 +42,37 @@ function LoginModal() {
         localStorage.setItem("user", JSON.stringify(user));
 
         if (user.isAdmin || user.position === "santri")
-          return (window.location.href = user.position + "_dashboard");
+          return (window.location.href = user.isAdmin
+            ? "admin_dashboard"
+            : "santri_dashboard");
         else return (window.location.href = "/");
+      })
+      .catch(({ response }) => {
+        setAuthError({ status: true, errors: response?.data });
+      });
+  };
+
+  const handleOnChange = (e) => {
+    console.log(registerData);
+    let value = e.target.value;
+    let data = { ...registerData, [e.target.name]: value };
+    setRegisterData(data);
+    setAuthError({ status: false, errors: "" });
+  };
+
+  const handleRegister = () => {
+    console.log("registerData ==>> ", registerData);
+    axios
+      .post(SERVER_URL + "auth/register", registerData)
+      .then(({ data }) => {
+        console.log("data ==>> ", data.token);
+        const user = jwt.verify(data.token, "QRCODEAUTH");
+        user.picture = 'user.webp'
+        user.position = 'guest'
+        console.log("user ==>> ", user);
+        localStorage.setItem("user", JSON.stringify(user));
+
+        return (window.location.href = "/");
       })
       .catch(({ response }) => {
         setAuthError({ status: true, errors: response?.data });
@@ -56,9 +90,9 @@ function LoginModal() {
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content single-card">
           <div class="modal-header">
-            <h4 class="modal-title" id="exampleModalCenterTitle">
+            {/* <h4 class="modal-title" id="exampleModalCenterTitle">
               Login Method
-            </h4>
+            </h4> */}
             <button
               type="button"
               class="close"
@@ -97,7 +131,7 @@ function LoginModal() {
                   aria-controls="qrcode"
                   aria-selected="false"
                 >
-                  <i class="fa fa-qrcode mr-2"></i>Scan QRCode
+                  <i class="fa fa-sign-in-alt mr-2"></i>Register
                 </a>
               </li>
             </ul>
@@ -179,7 +213,7 @@ function LoginModal() {
                 role="tabpanel"
                 aria-labelledby="qrcode-tab"
               >
-                <h5 className="text-center m-5">Scan to Login</h5>
+                {/* <h5 className="text-center m-5">Scan to Login</h5>
                 <div class="row text-center">
                   <div class="img-wrapper">
                     <img
@@ -187,6 +221,85 @@ function LoginModal() {
                       width="200"
                       className="img-thumbnail shadow p-0"
                     />
+                  </div>
+                </div> */}
+                <div class="row">
+                  <div class="col-12">
+                    <h5 className="text-center m-5">Form Register</h5>
+                  </div>
+                  {authError.status && authError.errors ? (
+                    <div class="col-lg-8 m-auto">
+                      <div class="alert alert-danger text-light" role="alert">
+                        <i class="fa fa-exclamation-triangle mr-2"></i>
+                        {authError.errors}
+                      </div>
+                    </div>
+                  ) : (
+                    ""
+                  )}
+                  <div class="col-lg-8 m-auto">
+                    <form
+                      class="form-contact contact_form"
+                      method="post"
+                      id="contactForm"
+                      novalidate="novalidate"
+                    >
+                      <div class="row justify-items-center">
+                        <div class="col-12">
+                          <div class="form-group">
+                            <input
+                              class="form-control valid"
+                              name="name"
+                              id="name"
+                              type="text"
+                              onfocus="this.placeholder = ''"
+                              onblur="this.placeholder = 'Enter Full Name'"
+                              placeholder="Full Name"
+                              value={registerData.name}
+                              onChange={handleOnChange}
+                            />
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <input
+                              class="form-control valid"
+                              name="email"
+                              id="email"
+                              type="email"
+                              onfocus="this.placeholder = ''"
+                              onblur="this.placeholder = 'Enter email address'"
+                              placeholder="Email"
+                              value={registerData.email}
+                              onChange={handleOnChange}
+                            />
+                          </div>
+                        </div>
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                            <input
+                              class="form-control valid"
+                              name="password"
+                              id="password"
+                              type="password"
+                              onfocus="this.placeholder = ''"
+                              onblur="this.placeholder = 'Enter your password'"
+                              placeholder="Enter your password"
+                              onChange={handleOnChange}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group mt-3 float-right">
+                        <button
+                          type="button"
+                          class="button boxed-btn"
+                          onClick={handleRegister}
+                        >
+                          Register
+                        </button>
+                      </div>
+                    </form>
                   </div>
                 </div>
               </div>

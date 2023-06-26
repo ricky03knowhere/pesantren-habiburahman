@@ -12,7 +12,7 @@ const Pembayaran = () => {
     axios
       .get(SERVER_URL + "transaction/pembayaran")
       .then(({ data }) =>
-        setPembayaran(data.filter((pem) => pem.status !== "false"))
+        setPembayaran(data.filter((pem) => pem.status !== "unpaid"))
       )
       .catch((err) => console.log(err));
   }, []);
@@ -117,7 +117,7 @@ const Pembayaran = () => {
                           </span>
                         </td>
                         <td>
-                          {pem.status === "false" ? (
+                          {pem.status === "unpaid" ? (
                             <span class="badge badge-sm bg-gradient-danger">
                               unpaid
                             </span>

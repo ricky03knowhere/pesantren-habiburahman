@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { SERVER_URL } from "../../utils/utils";
+import EditBiayaModal from "../../components/dashboardPage/EditBiayaModal";
 
 const Biaya = () => {
   const [biaya, setBiaya] = useState([]);
+  const [modal, setModal] = useState("");
 
   useEffect(() => {
     axios
@@ -17,7 +19,7 @@ const Biaya = () => {
       <tr>
         <td></td>
         <td className="font-weight-bold">Total</td>
-        <td  className="font-weight-bold">
+        <td className="font-weight-bold">
           {val.toLocaleString("id-ID", {
             style: "currency",
             currency: "IDR",
@@ -26,6 +28,15 @@ const Biaya = () => {
         <td></td>
       </tr>
     );
+  }
+
+  function loadEditModal(e) {
+    setModal("");
+    const id = e.target.dataset.id;
+    console.log("id ==>> ", e.target);
+    const data = biaya.filter((item) => item._id === id);
+    console.log("data ==>> ", data);
+    setModal(<EditBiayaModal biaya={data} />);
   }
 
   let total;
@@ -53,7 +64,13 @@ const Biaya = () => {
               </p>
             </td>
             <td>
-              <p class="text-sm text-secondary mb-0">
+              <p
+                class="text-sm text-secondary mb-0 d-block"
+                data-toggle="modal"
+                data-target="#modal-1"
+                data-id={data._id}
+                onClick={loadEditModal}
+              >
                 <i class="material-icons opacity-10 me-2">edit</i>Edit
               </p>
             </td>
@@ -148,6 +165,10 @@ const Biaya = () => {
           </div>
         </div>
       </div>
+
+      {/* <!-- MODAL START --> */}
+      {modal ? modal : ""}
+      {/* <!-- MODAL END --> */}
     </div>
   );
 };

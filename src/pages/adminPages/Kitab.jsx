@@ -1,9 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { SERVER_URL } from "../../utils/utils";
+import KitabModal from "../../components/KitabModal";
 
 const Kitab = () => {
   const [kitab, setKitab] = useState([]);
+  const [modal, setModal] = useState("");
 
   useEffect(() => {
     axios
@@ -12,8 +14,17 @@ const Kitab = () => {
       .catch((err) => console.log(err));
   }, []);
 
+  function loadModal(e) {
+    setModal("");
+    const id = e.target.dataset.id;
+    console.log("id ==>> ", id);
+    const data = kitab.filter((item) => kitab.indexOf(item) == id);
+    console.log("data ==>> ", data);
+    setModal(<KitabModal kitab={data} />);
+  }
+
   return (
-    <div class="row">
+    <div class="row table-wrapper">
       <div class="col-12">
         <div class="card my-4">
           <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
@@ -67,7 +78,9 @@ const Kitab = () => {
                             />
                           </div>
                           <div class="my-auto">
-                            <h6 class="mb-0 text-sm font-weight-bolder">{el.title}</h6>
+                            <h6 class="mb-0 text-sm font-weight-bolder">
+                              {el.title}
+                            </h6>
                           </div>
                         </div>
                       </td>
@@ -78,9 +91,15 @@ const Kitab = () => {
                         <p class="text-sm text-secondary mb-0">{el.genre}</p>
                       </td>
                       <td>
-                        <p class="text-sm text-secondary mb-0">
-                          <i class="material-icons opacity-10 me-2">edit</i>
-                          Edit
+                        <p
+                          class="text-sm text-secondary mb-0"
+                          data-toggle="modal"
+                          data-target="#modal-1"
+                          onClick={loadModal}
+                          data-id={i}
+                        >
+                          <i class="material-icons opacity-10 me-2">info</i>
+                          Info
                         </p>
                       </td>
                     </tr>
@@ -91,6 +110,9 @@ const Kitab = () => {
           </div>
         </div>
       </div>
+      {/* <!-- MODAL START --> */}
+      {modal ? modal : ""}
+      {/* <!-- MODAL END --> */}
     </div>
   );
 };

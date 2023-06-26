@@ -9,8 +9,8 @@ const SantriRegister = () => {
   const [userId, setUserId] = useState("");
 
   useEffect(() => {
-    const { _id, email, name } = JSON.parse(localStorage.getItem("user"));
-    setUserId(_id);
+    const { user_id, email, name } = JSON.parse(localStorage.getItem("user"));
+    setUserId(user_id);
     console.log("userId ==>> ", userId);
 
     setdata({ email, name, education: ["", ""] });
@@ -51,7 +51,7 @@ const SantriRegister = () => {
         localStorage.clear();
         localStorage.setItem("user", JSON.stringify(getUser));
         console.log("Santri Successfuly Registered.");
-        window.location.href = "/santri";
+        window.location.href = "/santri_dashboard";
       })
       .catch((err) => console.log(err));
   };
@@ -184,6 +184,18 @@ const SantriRegister = () => {
                       onChange={handleEducation}
                     />
                   </div>
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    onChange={handleChange}
+                    name="gender"
+                    required
+                    style={{paddingLeft: '1em'}}
+                  >
+                    <option selected>Pilih Gender</option>
+                    <option value="putra">Laki - Laki</option>
+                    <option value="putri">Perempuan</option>
+                  </select>
                 </div>
                 <div class="col-sm-6 education">
                   <div class="form-group">
