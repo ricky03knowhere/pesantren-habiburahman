@@ -24,6 +24,8 @@ import Kitab from "./pages/adminPages/Kitab";
 import Ekstrakulikuler from "./pages/adminPages/Ekstrakulikuler";
 import Biaya from "./pages/adminPages/Biaya";
 import Profile from "./pages/Profile";
+import PembayaranPertahun from "./pages/adminPages/PembayaranPertahun";
+import PembayaranPerbulan from "./pages/adminPages/PembayaranPerbulan";
 
 export class App extends Component {
   componentDidMount() {
@@ -84,6 +86,16 @@ export class App extends Component {
         <AppRoute
           path="history_pembayaran"
           component={Pembayaran}
+          layout={DashboardLayout}
+        />
+        <AppRoute
+          path="history_pembayaran_pertahun"
+          component={PembayaranPertahun}
+          layout={DashboardLayout}
+        />
+        <AppRoute
+          path="history_pembayaran_perbulan"
+          component={PembayaranPerbulan}
           layout={DashboardLayout}
         />
         <AppRoute

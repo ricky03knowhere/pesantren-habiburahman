@@ -91,19 +91,19 @@ const SantriDashboard = () => {
         <div class="card">
           <div class="card-header p-3 pt-2">
             <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-              <i class="material-icons opacity-10">weekend</i>
+              <i class="material-icons opacity-10">money</i>
             </div>
             <div class="text-end pt-1">
-              <p class="text-sm mb-0 text-capitalize">Today's Money</p>
-              <h4 class="mb-0">$53k</h4>
+              <p class="text-sm mb-0 text-capitalize">Tagihan Bulan Ini</p>
+              <h4 class="mb-0">Rp900k</h4>
             </div>
           </div>
           <hr class="dark horizontal my-0" />
           <div class="card-footer p-3">
-            <p class="mb-0">
+            {/* <p class="mb-0">
               <span class="text-success text-sm font-weight-bolder">+55% </span>
               than lask week
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
@@ -111,19 +111,19 @@ const SantriDashboard = () => {
         <div class="card">
           <div class="card-header p-3 pt-2">
             <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-              <i class="material-icons opacity-10">person</i>
+              <i class="material-icons opacity-10">money</i>
             </div>
             <div class="text-end pt-1">
-              <p class="text-sm mb-0 text-capitalize">Today's Users</p>
-              <h4 class="mb-0">2,300</h4>
+              <p class="text-sm mb-0 text-capitalize">Biaya Pendaftaran</p>
+              <h4 class="mb-0">Lunas ✅</h4>
             </div>
           </div>
           <hr class="dark horizontal my-0" />
           <div class="card-footer p-3">
-            <p class="mb-0">
+            {/* <p class="mb-0">
               <span class="text-success text-sm font-weight-bolder">+3% </span>
               than lask month
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
@@ -131,23 +131,23 @@ const SantriDashboard = () => {
         <div class="card">
           <div class="card-header p-3 pt-2">
             <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
-              <i class="material-icons opacity-10">person</i>
+              <i class="material-icons opacity-10">weekend</i>
             </div>
             <div class="text-end pt-1">
-              <p class="text-sm mb-0 text-capitalize">New Clients</p>
-              <h4 class="mb-0">3,462</h4>
+              <p class="text-sm mb-0 text-capitalize">SPP Terbayar</p>
+              <h4 class="mb-0">5 (bulan)</h4>
             </div>
           </div>
           <hr class="dark horizontal my-0" />
           <div class="card-footer p-3">
-            <p class="mb-0">
+            {/* <p class="mb-0">
               <span class="text-danger text-sm font-weight-bolder">-2%</span>{" "}
               than yesterday
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
-      <div class="col-xl-3 col-sm-6">
+      {/* <div class="col-xl-3 col-sm-6">
         <div class="card">
           <div class="card-header p-3 pt-2">
             <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
@@ -166,7 +166,7 @@ const SantriDashboard = () => {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

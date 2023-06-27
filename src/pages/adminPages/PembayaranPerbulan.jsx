@@ -1,44 +1,69 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { SERVER_URL } from "../../utils/utils";
-import { loadPembayaranModal } from "../../interfaces";
-
-const Pembayaran = () => {
-  const [pembayaran, setPembayaran] = useState([]);
-  const [modal, setModal] = useState("");
-  const [checked, setCheked] = useState(false);
-
-  useEffect(() => {
-    axios
-      .get(SERVER_URL + "transaction/pembayaran")
-      .then(({ data }) =>
-        setPembayaran(data.filter((pem) => pem.status !== "unpaid"))
-      )
-      .catch((err) => console.log(err));
-  }, []);
-
-  const handleChange = async (e) => {
-    const data = {
-      id: e.target.value,
+const PembayaranPerbulan = () => {
+  let pembayaran = [
+    {
+      _id: "63a88a2a76b9cdfe6d246ee8",
+      type: "pendaftaran",
+      price: 800000,
+      dueDate: "2023-06-25T17:36:42.280Z",
       status: "paid",
-    };
-    await axios
-      .put(SERVER_URL + "transaction/spp/verification", data)
-      .then(({ data }) => {
-        window.alert(data);
-        return (window.location.href = "/daftar_pembayaran");
-      });
-  };
-
-  const handleClickChange = (e) => {
-    if (window.confirm("Verifikasi pembayaran ini..?")) {
-      setCheked(!e.target.checked);
-      return handleChange(e);
-    } else {
-      return null;
-    }
-  };
-
+      payDate: "2023-06-26T07:42:23.093Z",
+      user: [{ name: "Eren" }],
+    },
+    {
+      _id: "63a88a2a76b9cdfe6d246ee8",
+      type: "spp",
+      price: 900000,
+      dueDate: "2023-06-21T17:36:42.280Z",
+      status: "paid",
+      payDate: "2023-06-21T07:42:23.093Z",
+      user: [{ name: "Mikasa" }],
+    },
+    {
+      _id: "63a88a2a76b9cdfe6d246ee8",
+      type: "spp",
+      price: 900000,
+      dueDate: "2023-06-15T17:36:42.280Z",
+      status: "paid",
+      payDate: "2023-06-16T07:42:23.093Z",
+      user: [{ name: "Armin" }],
+    },
+    {
+      _id: "63a88a2a76b9cdfe6d246ee8",
+      type: "pendaftaran",
+      price: 900000,
+      dueDate: "2023-06-02T17:36:42.280Z",
+      status: "paid",
+      payDate: "2023-06-06T07:42:23.093Z",
+      user: [{ name: "Jean" }],
+    },
+    {
+      _id: "63a88a2a76b9cdfe6d246ee8",
+      type: "spp",
+      price: 900000,
+      dueDate: "2023-06-25T17:36:42.280Z",
+      status: "paid",
+      payDate: "2023-06-26T07:42:23.093Z",
+      user: [{ name: "Connie" }],
+    },
+    {
+      _id: "63a88a2a76b9cdfe6d246ee8",
+      type: "spp",
+      price: 900000,
+      dueDate: "2023-06-25T17:36:42.280Z",
+      status: "paid",
+      payDate: "2023-06-26T07:42:23.093Z",
+      user: [{ name: "Levi" }],
+    },
+    {
+      _id: "63a88a2a76b9cdfe6d246ee8",
+      type: "spp",
+      price: 900000,
+      dueDate: "2023-06-25T17:36:42.280Z",
+      status: "paid",
+      payDate: "2023-06-26T07:42:23.093Z",
+      user: [{ name: "Reiner" }],
+    },
+  ];
   return (
     <div class="row" id="pembayaran">
       <div class="col-12">
@@ -52,23 +77,11 @@ const Pembayaran = () => {
                 >
                   history
                 </i>
-                History Pembayaran
+                History Pembayaran Bulan ini
               </h5>
             </div>
           </div>
           <div class="card-body px-0 pb-2">
-            <div className="flex text-end my-4 me-5">
-              <a href="history_pembayaran_perbulan" className="badge badge-lg bg-gradient-success me-4 p-3">
-                <i class="fa fa-history me-2"></i>Pembayaran Bulan ini
-              </a>
-              <a
-                href="/history_pembayaran_pertahun"
-                className="badge badge-lg bg-gradient-success p-3"
-              >
-                <i class="fa fa-calendar-alt me-2"></i>Pembayaran Tahun ini
-              </a>
-            </div>
-
             <div class="table-responsive p-0">
               <table class="table align-items-center mb-0">
                 <thead>
@@ -150,9 +163,9 @@ const Pembayaran = () => {
                                 class="material-icons opacity-10 me-2"
                                 data-toggle="modal"
                                 data-target="#modal-1"
-                                onClick={(e) =>
-                                  loadPembayaranModal(e, setModal, pembayaran)
-                                }
+                                // onClick={(e) =>
+                                //   loadPembayaranModal(e, setModal, pembayaran)
+                                // }
                                 data-id={i}
                               >
                                 info
@@ -166,8 +179,8 @@ const Pembayaran = () => {
                                 class="form-check-input ms-auto"
                                 type="checkbox"
                                 value={pem._id}
-                                onChange={handleClickChange}
-                                checked={checked || pem.status === "paid"}
+                                // onChange={handleClickChange}
+                                checked
                                 disabled={pem.status === "paid"}
                               />
                             </div>
@@ -181,12 +194,8 @@ const Pembayaran = () => {
           </div>
         </div>
       </div>
-
-      {/* <!-- MODAL START --> */}
-      {modal ? modal : ""}
-      {/* <!-- MODAL END --> */}
     </div>
   );
 };
 
-export default Pembayaran;
+export default PembayaranPerbulan;
