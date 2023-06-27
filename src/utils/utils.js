@@ -1,4 +1,4 @@
-const SERVER_URL = "http://localhost:4001/";
+const SERVER_URL = "https://outstanding-cow-long-johns.cyclic.app/";
 
 const appendScript = (scriptToAppend) => {
   const script = document.createElement("script");
